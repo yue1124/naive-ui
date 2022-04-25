@@ -413,6 +413,12 @@ export function createComponentMenuOptions ({ lang, theme, mode }) {
           path: '/calendar'
         },
         {
+          en: 'Markdown',
+          zh: '结构文本展示',
+          enSuffix: true,
+          path: '/markdown'
+        },
+        {
           en: 'Countdown',
           zh: '倒计时',
           enSuffix: true,

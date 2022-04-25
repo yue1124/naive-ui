@@ -476,6 +476,10 @@ export const enComponentRoutes = [
     component: () => import('../../src/calendar/demos/enUS/index.demo-entry.md')
   },
   {
+    path: 'markdown',
+    component: () => import('../../src/markdown/demos/enUS/index.demo-entry.md')
+  },
+  {
     path: 'color-picker',
     component: () =>
       import('../../src/color-picker/demos/enUS/index.demo-entry.md')
@@ -838,6 +842,10 @@ export const zhComponentRoutes = [
   {
     path: 'calendar',
     component: () => import('../../src/calendar/demos/zhCN/index.demo-entry.md')
+  },
+  {
+    path: 'markdown',
+    component: () => import('../../src/markdown/demos/zhCN/index.demo-entry.md')
   },
   {
     path: 'color-picker',
