@@ -1,2 +1,2 @@
-import type { ImageTheme } from './light'
-export declare const imageDark: ImageTheme
+import type { ImageTheme } from './light';
+export declare const imageDark: ImageTheme;

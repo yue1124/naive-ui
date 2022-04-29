@@ -1,1 +1,1 @@
-export { default as NDivider } from './src/Divider'
+export { default as NDivider } from './src/Divider';

@@ -1,1 +1,1 @@
-export { default as NAlert } from './src/Alert'
+export { default as NAlert } from './src/Alert';

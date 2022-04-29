@@ -1,3 +1,3 @@
-import type { DescriptionsTheme } from './light'
-declare const descriptionsDark: DescriptionsTheme
-export default descriptionsDark
+import type { DescriptionsTheme } from './light';
+declare const descriptionsDark: DescriptionsTheme;
+export default descriptionsDark;

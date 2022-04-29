@@ -1,5 +1,5 @@
-import rtlStyle from '../src/styles/rtl.cssr'
+import rtlStyle from '../src/styles/rtl.cssr';
 export const radioRtl = {
-  name: 'Radio',
-  style: rtlStyle
-}
+    name: 'Radio',
+    style: rtlStyle
+};

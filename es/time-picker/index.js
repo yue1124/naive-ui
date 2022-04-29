@@ -1,1 +1,1 @@
-export { default as NTimePicker } from './src/TimePicker'
+export { default as NTimePicker } from './src/TimePicker';

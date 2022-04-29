@@ -1,1 +1,1 @@
-export { default as NAutoComplete } from './src/AutoComplete'
+export { default as NAutoComplete } from './src/AutoComplete';

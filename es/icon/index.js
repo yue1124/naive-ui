@@ -1,2 +1,2 @@
 /* istanbul ignore file */
-export { NIcon } from './src/Icon'
+export { NIcon } from './src/Icon';

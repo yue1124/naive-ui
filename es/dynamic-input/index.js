@@ -1,1 +1,1 @@
-export { default as NDynamicInput } from './src/DynamicInput'
+export { default as NDynamicInput } from './src/DynamicInput';

@@ -1,1 +1,1 @@
-export { default as NMarkdown } from './src/Markdown'
+export { default as NMarkdown } from './src/Markdown';

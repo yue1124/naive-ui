@@ -1,3 +1,3 @@
-import type { NLocale } from './enUS'
-declare const itIT: NLocale
-export default itIT
+import type { NLocale } from './enUS';
+declare const itIT: NLocale;
+export default itIT;

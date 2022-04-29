@@ -1,1 +1,1 @@
-export { default as NTransfer } from './src/Transfer'
+export { default as NTransfer } from './src/Transfer';

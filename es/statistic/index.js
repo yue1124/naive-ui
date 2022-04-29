@@ -1,1 +1,1 @@
-export { default as NStatistic } from './src/Statistic'
+export { default as NStatistic } from './src/Statistic';

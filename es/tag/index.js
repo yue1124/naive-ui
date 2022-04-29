@@ -1,1 +1,1 @@
-export { default as NTag } from './src/Tag'
+export { default as NTag } from './src/Tag';

@@ -1,1 +1,1 @@
-export { default as NAffix } from './src/Affix'
+export { default as NAffix } from './src/Affix';

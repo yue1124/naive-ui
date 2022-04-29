@@ -1,6 +1,6 @@
-import { commonLight } from '../../_styles/common'
+import { commonLight } from '../../_styles/common';
 const buttonGroupLight = {
-  name: 'ButtonGroup',
-  common: commonLight
-}
-export default buttonGroupLight
+    name: 'ButtonGroup',
+    common: commonLight
+};
+export default buttonGroupLight;

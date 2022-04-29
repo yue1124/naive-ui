@@ -1,3 +1,3 @@
-import type { AlertTheme } from './light'
-declare const alertDark: AlertTheme
-export default alertDark
+import type { AlertTheme } from './light';
+declare const alertDark: AlertTheme;
+export default alertDark;

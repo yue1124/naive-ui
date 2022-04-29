@@ -1,1 +1,1 @@
-export { default as NTime } from './src/Time'
+export { default as NTime } from './src/Time';

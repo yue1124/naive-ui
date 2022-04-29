@@ -1,1 +1,1 @@
-export { default as NRate } from './src/Rate'
+export { default as NRate } from './src/Rate';

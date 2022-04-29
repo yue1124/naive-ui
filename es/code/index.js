@@ -1,1 +1,1 @@
-export { default as NCode } from './src/Code'
+export { default as NCode } from './src/Code';

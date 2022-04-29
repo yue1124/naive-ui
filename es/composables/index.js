@@ -1,1 +1,1 @@
-export { useThemeVars } from './use-theme-vars'
+export { useThemeVars } from './use-theme-vars';

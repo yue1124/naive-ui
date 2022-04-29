@@ -1,1 +1,1 @@
-export { default as NPopselect } from './src/Popselect'
+export { default as NPopselect } from './src/Popselect';

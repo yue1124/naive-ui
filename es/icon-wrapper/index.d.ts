@@ -1,1 +1,1 @@
-export { NIconWrapper } from './src/IconWrapper'
+export { NIconWrapper } from './src/IconWrapper';

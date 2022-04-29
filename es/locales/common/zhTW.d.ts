@@ -1,3 +1,3 @@
-import type { NLocale } from './enUS'
-declare const zhTW: NLocale
-export default zhTW
+import type { NLocale } from './enUS';
+declare const zhTW: NLocale;
+export default zhTW;

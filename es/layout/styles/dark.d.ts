@@ -1,3 +1,3 @@
-import type { LayoutTheme } from './light'
-declare const layoutDark: LayoutTheme
-export default layoutDark
+import type { LayoutTheme } from './light';
+declare const layoutDark: LayoutTheme;
+export default layoutDark;

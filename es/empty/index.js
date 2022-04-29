@@ -1,1 +1,1 @@
-export { default as NEmpty } from './src/Empty'
+export { default as NEmpty } from './src/Empty';

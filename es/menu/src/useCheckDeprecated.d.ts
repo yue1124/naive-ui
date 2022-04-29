@@ -1,2 +1,2 @@
-import type { MenuSetupProps } from './Menu'
-export declare function useCheckDeprecated(props: MenuSetupProps): void
+import type { MenuSetupProps } from './Menu';
+export declare function useCheckDeprecated(props: MenuSetupProps): void;

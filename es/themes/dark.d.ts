@@ -1,2 +1,2 @@
-import type { BuiltInGlobalTheme } from './interface'
-export declare const darkTheme: BuiltInGlobalTheme
+import type { BuiltInGlobalTheme } from './interface';
+export declare const darkTheme: BuiltInGlobalTheme;

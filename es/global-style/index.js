@@ -1,1 +1,1 @@
-export { default as NGlobalStyle } from './src/GlobalStyle'
+export { default as NGlobalStyle } from './src/GlobalStyle';

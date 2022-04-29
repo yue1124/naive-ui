@@ -1,6 +1,6 @@
-import { commonDark } from '../../_styles/common'
+import { commonDark } from '../../_styles/common';
 const buttonGroupDark = {
-  name: 'ButtonGroup',
-  common: commonDark
-}
-export default buttonGroupDark
+    name: 'ButtonGroup',
+    common: commonDark
+};
+export default buttonGroupDark;

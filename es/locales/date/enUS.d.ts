@@ -1,8 +1,8 @@
-import type { Locale } from 'date-fns'
+import type { Locale } from 'date-fns';
 interface NDateLocale {
-  name: string
-  locale: Locale
+    name: string;
+    locale: Locale;
 }
-declare const dateEnUs: NDateLocale
-export { NDateLocale }
-export default dateEnUs
+declare const dateEnUs: NDateLocale;
+export { NDateLocale };
+export default dateEnUs;

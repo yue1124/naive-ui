@@ -1,5 +1,5 @@
-import rtlStyle from '../src/styles/rtl.cssr'
+import rtlStyle from '../src/styles/rtl.cssr';
 export const cardRtl = {
-  name: 'Card',
-  style: rtlStyle
-}
+    name: 'Card',
+    style: rtlStyle
+};

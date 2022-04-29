@@ -1,1 +1,1 @@
-export { default as NCalendar } from './src/Calendar'
+export { default as NCalendar } from './src/Calendar';

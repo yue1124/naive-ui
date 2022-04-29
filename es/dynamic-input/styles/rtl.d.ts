@@ -1,2 +1,2 @@
-import type { RtlItem } from '../../config-provider/src/internal-interface'
-export declare const dynamicInputRtl: RtlItem
+import type { RtlItem } from '../../config-provider/src/internal-interface';
+export declare const dynamicInputRtl: RtlItem;

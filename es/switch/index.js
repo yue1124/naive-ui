@@ -1,1 +1,1 @@
-export { default as NSwitch } from './src/Switch'
+export { default as NSwitch } from './src/Switch';

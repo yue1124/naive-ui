@@ -1,1 +1,1 @@
-export { default as NBackTop } from './src/BackTop'
+export { default as NBackTop } from './src/BackTop';

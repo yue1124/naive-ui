@@ -1,5 +1,5 @@
-import rtlStyle from '../src/styles/rtl.cssr'
+import rtlStyle from '../src/styles/rtl.cssr';
 export default {
-  name: 'PageHeader',
-  style: rtlStyle
-}
+    name: 'PageHeader',
+    style: rtlStyle
+};

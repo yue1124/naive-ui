@@ -1,1 +1,1 @@
-export { default as NInputNumber } from './src/InputNumber'
+export { default as NInputNumber } from './src/InputNumber';

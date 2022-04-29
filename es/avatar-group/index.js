@@ -1,1 +1,1 @@
-export { default as NAvatarGroup } from './src/AvatarGroup'
+export { default as NAvatarGroup } from './src/AvatarGroup';

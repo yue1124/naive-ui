@@ -1,1 +1,1 @@
-export { default as NModal } from './src/Modal'
+export { default as NModal } from './src/Modal';

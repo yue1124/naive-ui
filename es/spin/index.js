@@ -1,1 +1,1 @@
-export { default as NSpin } from './src/Spin'
+export { default as NSpin } from './src/Spin';

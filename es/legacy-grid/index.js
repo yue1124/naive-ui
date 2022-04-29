@@ -1,2 +1,2 @@
-export { default as NRow } from './src/Row'
-export { default as NCol } from './src/Col'
+export { default as NRow } from './src/Row';
+export { default as NCol } from './src/Col';

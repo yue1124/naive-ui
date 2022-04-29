@@ -1,1 +1,1 @@
-export { default as NDataTable } from './src/DataTable'
+export { default as NDataTable } from './src/DataTable';

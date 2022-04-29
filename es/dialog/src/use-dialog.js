@@ -1,10 +1,10 @@
-import { inject } from 'vue'
-import { dialogApiInjectionKey } from './context'
-import { throwError } from '../../_utils'
+import { inject } from 'vue';
+import { dialogApiInjectionKey } from './context';
+import { throwError } from '../../_utils';
 export function useDialog() {
-  const dialog = inject(dialogApiInjectionKey, null)
-  if (dialog === null) {
-    throwError('use-dialog', 'No outer <n-dialog-provider /> founded.')
-  }
-  return dialog
+    const dialog = inject(dialogApiInjectionKey, null);
+    if (dialog === null) {
+        throwError('use-dialog', 'No outer <n-dialog-provider /> founded.');
+    }
+    return dialog;
 }

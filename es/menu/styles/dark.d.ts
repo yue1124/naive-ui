@@ -1,3 +1,3 @@
-import type { MenuTheme } from './light'
-declare const menuDark: MenuTheme
-export default menuDark
+import type { MenuTheme } from './light';
+declare const menuDark: MenuTheme;
+export default menuDark;

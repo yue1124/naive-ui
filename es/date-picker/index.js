@@ -1,1 +1,1 @@
-export { default as NDatePicker } from './src/DatePicker'
+export { default as NDatePicker } from './src/DatePicker';

@@ -1,1 +1,1 @@
-export { default as NAvatar } from './src/Avatar'
+export { default as NAvatar } from './src/Avatar';

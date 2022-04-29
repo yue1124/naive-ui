@@ -1,20 +1,16 @@
-import type { ThemeCommonVars } from '../../_styles/common'
-import type { ExtractThemeOverrides } from '../../_mixins/use-theme'
-import type { GlobalThemeWithoutCommon } from './internal-interface'
-export type { ThemeCommonVars }
-export interface CustomThemeCommonVars {}
+import type { ThemeCommonVars } from '../../_styles/common';
+import type { ExtractThemeOverrides } from '../../_mixins/use-theme';
+import type { GlobalThemeWithoutCommon } from './internal-interface';
+export type { ThemeCommonVars };
+export interface CustomThemeCommonVars {
+}
 export interface GlobalTheme extends GlobalThemeWithoutCommon {
-  name: string
-  common?: ThemeCommonVars
+    name: string;
+    common?: ThemeCommonVars;
 }
 export declare type GlobalThemeOverrides = {
-  common?: Partial<ThemeCommonVars & CustomThemeCommonVars>
+    common?: Partial<ThemeCommonVars & CustomThemeCommonVars>;
 } & {
-  [key in keyof GlobalThemeWithoutCommon]?: ExtractThemeOverrides<
-    GlobalThemeWithoutCommon[key]
-  >
-}
-export type {
-  GlobalIconConfig,
-  GlobalComponentConfig
-} from './internal-interface'
+    [key in keyof GlobalThemeWithoutCommon]?: ExtractThemeOverrides<GlobalThemeWithoutCommon[key]>;
+};
+export type { GlobalIconConfig, GlobalComponentConfig } from './internal-interface';

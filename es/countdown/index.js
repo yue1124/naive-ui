@@ -1,1 +1,1 @@
-export { default as NCountdown } from './src/Countdown'
+export { default as NCountdown } from './src/Countdown';

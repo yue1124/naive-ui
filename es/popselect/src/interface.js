@@ -1,2 +1,2 @@
-import { createInjectionKey } from '../../_utils'
-export const popselectInjectionKey = createInjectionKey('n-popselect')
+import { createInjectionKey } from '../../_utils';
+export const popselectInjectionKey = createInjectionKey('n-popselect');

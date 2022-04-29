@@ -1,4 +1,4 @@
 export default {
-  extraFontSize: '12px',
-  width: '440px'
-}
+    extraFontSize: '12px',
+    width: '440px'
+};

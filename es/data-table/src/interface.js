@@ -1,2 +1,2 @@
-import { createInjectionKey } from '../../_utils'
-export const dataTableInjectionKey = createInjectionKey('n-data-table')
+import { createInjectionKey } from '../../_utils';
+export const dataTableInjectionKey = createInjectionKey('n-data-table');

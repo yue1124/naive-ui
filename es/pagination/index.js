@@ -1,1 +1,1 @@
-export { default as NPagination } from './src/Pagination'
+export { default as NPagination } from './src/Pagination';

@@ -1,2 +1,2 @@
-import { createInjectionKey } from '../../_utils'
-export const dynamicInputInjectionKey = createInjectionKey('n-dynamic-input')
+import { createInjectionKey } from '../../_utils';
+export const dynamicInputInjectionKey = createInjectionKey('n-dynamic-input');

@@ -1,14 +1,14 @@
-import { commonDark } from '../../_styles/common'
+import { commonDark } from '../../_styles/common';
 const loadingBarDark = {
-  name: 'LoadingBar',
-  common: commonDark,
-  self(vars) {
-    const { primaryColor } = vars
-    return {
-      colorError: 'red',
-      colorLoading: primaryColor,
-      height: '2px'
+    name: 'LoadingBar',
+    common: commonDark,
+    self(vars) {
+        const { primaryColor } = vars;
+        return {
+            colorError: 'red',
+            colorLoading: primaryColor,
+            height: '2px'
+        };
     }
-  }
-}
-export default loadingBarDark
+};
+export default loadingBarDark;

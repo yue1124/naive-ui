@@ -1,2 +1,2 @@
-import { createLayoutComponent } from './Layout'
-export default createLayoutComponent(true)
+import { createLayoutComponent } from './Layout';
+export default createLayoutComponent(true);

@@ -1,1 +1,1 @@
-export { default as NTreeSelect } from './src/TreeSelect'
+export { default as NTreeSelect } from './src/TreeSelect';

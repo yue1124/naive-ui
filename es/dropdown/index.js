@@ -1,1 +1,1 @@
-export { default as NDropdown } from './src/Dropdown'
+export { default as NDropdown } from './src/Dropdown';

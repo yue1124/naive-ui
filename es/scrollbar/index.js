@@ -1,1 +1,1 @@
-export { default as NScrollbar } from './src/ScrollBar'
+export { default as NScrollbar } from './src/ScrollBar';

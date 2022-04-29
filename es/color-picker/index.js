@@ -1,1 +1,1 @@
-export { default as NColorPicker } from './src/ColorPicker'
+export { default as NColorPicker } from './src/ColorPicker';

@@ -1,9 +1,9 @@
 import { PropType, ExtractPropTypes, VNodeChild } from 'vue';
 import { Key } from 'treemate';
-import type { MaybeArray } from '../../_utils';
-import { MenuOption, MenuGroupOption, MenuIgnoredOption, MenuMixedOption, OnUpdateValue, OnUpdateKeys } from './interface';
 import { FollowerPlacement } from 'vueuc';
 import { DropdownProps } from '../../dropdown';
+import type { MaybeArray } from '../../_utils';
+import { MenuOption, MenuGroupOption, MenuIgnoredOption, MenuMixedOption, OnUpdateValue, OnUpdateKeys } from './interface';
 declare const menuProps: {
     readonly options: {
         readonly type: PropType<MenuMixedOption[]>;

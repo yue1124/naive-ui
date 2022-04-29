@@ -1,1 +1,1 @@
-export { default as NMention } from './src/Mention'
+export { default as NMention } from './src/Mention';

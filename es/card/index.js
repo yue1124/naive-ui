@@ -1,1 +1,1 @@
-export { default as NCard } from './src/Card'
+export { default as NCard } from './src/Card';

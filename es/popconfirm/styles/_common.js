@@ -1,3 +1,3 @@
 export default {
-  iconSize: '22px'
-}
+    iconSize: '22px'
+};

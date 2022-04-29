@@ -1,5 +1,5 @@
-import rtlStyle from '../src/styles/rtl.cssr'
+import rtlStyle from '../src/styles/rtl.cssr';
 export const spaceRtl = {
-  name: 'Space',
-  style: rtlStyle
-}
+    name: 'Space',
+    style: rtlStyle
+};

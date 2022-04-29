@@ -1,1 +1,1 @@
-export { default as NPopover } from './src/Popover'
+export { default as NPopover } from './src/Popover';

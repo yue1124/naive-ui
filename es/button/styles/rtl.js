@@ -1,5 +1,5 @@
-import rtlStyle from '../src/styles/rtl.cssr'
+import rtlStyle from '../src/styles/rtl.cssr';
 export const buttonRtl = {
-  name: 'Button',
-  style: rtlStyle
-}
+    name: 'Button',
+    style: rtlStyle
+};

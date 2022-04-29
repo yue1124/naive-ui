@@ -1,2 +1,2 @@
-import { createInjectionKey } from '../../_utils'
-export const popconfirmInjectionKey = createInjectionKey('n-popconfirm')
+import { createInjectionKey } from '../../_utils';
+export const popconfirmInjectionKey = createInjectionKey('n-popconfirm');

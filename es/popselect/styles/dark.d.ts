@@ -1,3 +1,3 @@
-import type { PopselectTheme } from './light'
-declare const popselect: PopselectTheme
-export default popselect
+import type { PopselectTheme } from './light';
+declare const popselect: PopselectTheme;
+export default popselect;

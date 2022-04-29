@@ -1,1 +1,1 @@
-export { default as NDynamicTags } from './src/DynamicTags'
+export { default as NDynamicTags } from './src/DynamicTags';

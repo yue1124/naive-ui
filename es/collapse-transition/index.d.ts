@@ -1,2 +1,2 @@
-export { default as NCollapseTransition } from './src/CollapseTransition'
-export type { CollapseTransitionProps } from './src/CollapseTransition'
+export { default as NCollapseTransition } from './src/CollapseTransition';
+export type { CollapseTransitionProps } from './src/CollapseTransition';

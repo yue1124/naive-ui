@@ -1,2 +1,2 @@
-import { SkeletonTheme } from './light'
-export declare const skeletonDark: SkeletonTheme
+import { SkeletonTheme } from './light';
+export declare const skeletonDark: SkeletonTheme;

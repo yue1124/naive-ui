@@ -1,1 +1,1 @@
-export { default as NCollapseTransition } from './src/CollapseTransition'
+export { default as NCollapseTransition } from './src/CollapseTransition';

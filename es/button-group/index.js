@@ -1,1 +1,1 @@
-export { default as NButtonGroup } from './src/ButtonGroup'
+export { default as NButtonGroup } from './src/ButtonGroup';

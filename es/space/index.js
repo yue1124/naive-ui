@@ -1,1 +1,1 @@
-export { default as NSpace } from './src/Space'
+export { default as NSpace } from './src/Space';

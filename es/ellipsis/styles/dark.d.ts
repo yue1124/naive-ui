@@ -1,3 +1,3 @@
-import { EllipsisTheme } from './light'
-declare const ellipsisDark: EllipsisTheme
-export default ellipsisDark
+import { EllipsisTheme } from './light';
+declare const ellipsisDark: EllipsisTheme;
+export default ellipsisDark;

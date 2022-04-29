@@ -1,3 +1,3 @@
 export default {
-  fontWeightActive: '400'
-}
+    fontWeightActive: '400'
+};

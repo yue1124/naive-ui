@@ -1,2 +1,2 @@
-export { default as resultDark } from './dark'
-export { default as resultLight } from './light'
+export { default as resultDark } from './dark';
+export { default as resultLight } from './light';

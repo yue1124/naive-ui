@@ -1,5 +1,5 @@
-import rtlStyle from '../src/styles/rtl.cssr'
+import rtlStyle from '../src/styles/rtl.cssr';
 export const alertRtl = {
-  name: 'Alert',
-  style: rtlStyle
-}
+    name: 'Alert',
+    style: rtlStyle
+};

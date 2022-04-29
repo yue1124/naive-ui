@@ -1,2 +1,2 @@
-declare const _default: import('css-render').CNode
-export default _default
+declare const _default: import("css-render").CNode;
+export default _default;

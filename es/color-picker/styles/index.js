@@ -1,2 +1,2 @@
-export { default as colorPickerDark } from './dark'
-export { default as colorPickerLight } from './light'
+export { default as colorPickerDark } from './dark';
+export { default as colorPickerLight } from './light';

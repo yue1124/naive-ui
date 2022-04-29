@@ -1,1 +1,1 @@
-export declare type IconPlacement = 'left' | 'top'
+export declare type IconPlacement = 'left' | 'top';

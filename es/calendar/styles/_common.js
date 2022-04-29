@@ -1,3 +1,3 @@
 export default {
-  titleFontSize: '22px'
-}
+    titleFontSize: '22px'
+};

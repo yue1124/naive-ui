@@ -1,3 +1,3 @@
-import type { BackTopTheme } from './light'
-declare const backTopDark: BackTopTheme
-export default backTopDark
+import type { BackTopTheme } from './light';
+declare const backTopDark: BackTopTheme;
+export default backTopDark;

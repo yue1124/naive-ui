@@ -1,1 +1,1 @@
-export { default as NWatermark } from './src/Watermark'
+export { default as NWatermark } from './src/Watermark';

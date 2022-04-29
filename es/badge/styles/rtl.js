@@ -1,5 +1,5 @@
-import rtlStyle from '../src/styles/rtl.cssr'
+import rtlStyle from '../src/styles/rtl.cssr';
 export const badgeRtl = {
-  name: 'Badge',
-  style: rtlStyle
-}
+    name: 'Badge',
+    style: rtlStyle
+};

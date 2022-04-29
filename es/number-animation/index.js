@@ -1,1 +1,1 @@
-export { default as NNumberAnimation } from './src/NumberAnimation'
+export { default as NNumberAnimation } from './src/NumberAnimation';

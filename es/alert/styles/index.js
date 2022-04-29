@@ -1,3 +1,3 @@
-export { default as alertDark } from './dark'
-export { default as alertLight } from './light'
-export { alertRtl } from './rtl'
+export { default as alertDark } from './dark';
+export { default as alertLight } from './light';
+export { alertRtl } from './rtl';

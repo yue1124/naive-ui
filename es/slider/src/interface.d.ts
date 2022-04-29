@@ -1,1 +1,1 @@
-export declare type OnUpdateValueImpl = (value: number | number[]) => void
+export declare type OnUpdateValueImpl = (value: number | number[]) => void;

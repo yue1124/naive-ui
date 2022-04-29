@@ -1,1 +1,1 @@
-export { default as NLog } from './src/Log'
+export { default as NLog } from './src/Log';
