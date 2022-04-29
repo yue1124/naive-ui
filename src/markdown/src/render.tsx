@@ -18,6 +18,7 @@ import {
 } from '../../typography'
 import { NCode } from '../../code'
 import { NCard } from '../../card'
+import { NScrollbar } from '../../scrollbar'
 
 export interface RenderOptions {
   softbreak: 'br' | 'n'
@@ -85,7 +86,18 @@ const codeBlockRenderer: ContentRenderer = {
       <NCard size="small">
         {{
           default: () => (
-            <NCode language={language} code={node.literal || undefined} />
+            <NScrollbar xScrollable>
+              {{
+                default: () => (
+                  <div style="padding-bottom: 12px">
+                    <NCode
+                      language={language}
+                      code={node.literal || undefined}
+                    />
+                  </div>
+                )
+              }}
+            </NScrollbar>
           )
         }}
       </NCard>
