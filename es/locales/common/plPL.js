@@ -41,6 +41,9 @@ const plPL = {
         endDatePlaceholder: 'Data zakończenia',
         startDatetimePlaceholder: 'Data i godzina rozpoczęcia',
         endDatetimePlaceholder: 'Data i godzina zakończenia',
+        // FIXME: translation needed
+        startMonthPlaceholder: 'Start Month',
+        endMonthPlaceholder: 'End Month',
         monthBeforeYear: true,
         firstDayOfWeek: 6,
         today: 'Dziś'

@@ -136,6 +136,10 @@ declare const treeProps: {
         readonly type: BooleanConstructor;
         readonly default: true;
     };
+    readonly checkboxPlacement: {
+        readonly type: PropType<"left" | "right">;
+        readonly default: "left";
+    };
     readonly virtualScroll: BooleanConstructor;
     readonly watchProps: PropType<("defaultExpandedKeys" | "defaultCheckedKeys" | "defaultSelectedKeys")[]>;
     readonly renderLabel: PropType<({ option, checked, selected }: import("./interface").TreeRenderProps) => VNodeChild>;
@@ -433,6 +437,10 @@ declare const _default: import("vue").DefineComponent<{
     readonly animated: {
         readonly type: BooleanConstructor;
         readonly default: true;
+    };
+    readonly checkboxPlacement: {
+        readonly type: PropType<"left" | "right">;
+        readonly default: "left";
     };
     readonly virtualScroll: BooleanConstructor;
     readonly watchProps: PropType<("defaultExpandedKeys" | "defaultCheckedKeys" | "defaultSelectedKeys")[]>;
@@ -1202,6 +1210,10 @@ declare const _default: import("vue").DefineComponent<{
         readonly type: BooleanConstructor;
         readonly default: true;
     };
+    readonly checkboxPlacement: {
+        readonly type: PropType<"left" | "right">;
+        readonly default: "left";
+    };
     readonly virtualScroll: BooleanConstructor;
     readonly watchProps: PropType<("defaultExpandedKeys" | "defaultCheckedKeys" | "defaultSelectedKeys")[]>;
     readonly renderLabel: PropType<({ option, checked, selected }: import("./interface").TreeRenderProps) => VNodeChild>;
@@ -1419,6 +1431,7 @@ declare const _default: import("vue").DefineComponent<{
     cancelable: boolean;
     selectable: boolean;
     blockLine: boolean;
+    checkboxPlacement: "left" | "right";
     defaultCheckedKeys: Key[];
     defaultSelectedKeys: Key[];
     internalTreeSelect: boolean;

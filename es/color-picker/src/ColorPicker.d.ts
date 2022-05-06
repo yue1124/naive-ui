@@ -2686,9 +2686,9 @@ declare const _default: import("vue").DefineComponent<{
     to: string | boolean | HTMLElement;
     placement: FollowerPlacement;
     defaultShow: boolean;
+    actions: "confirm"[];
     showAlpha: boolean;
     modes: ColorPickerMode[];
     showPreview: boolean;
-    actions: "confirm"[];
 }>;
 export default _default;

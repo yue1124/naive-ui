@@ -41,6 +41,8 @@ const enGB = {
         endDatePlaceholder: 'End Date',
         startDatetimePlaceholder: 'Start Date and Time',
         endDatetimePlaceholder: 'End Date and Time',
+        startMonthPlaceholder: 'Start Month',
+        endMonthPlaceholder: 'End Month',
         monthBeforeYear: true,
         firstDayOfWeek: 0,
         today: 'Today'

@@ -41,6 +41,9 @@ const deDE = {
         endDatePlaceholder: 'Enddatum',
         startDatetimePlaceholder: 'Anfangsdatum und Uhrzeit',
         endDatetimePlaceholder: 'Enddatum und Uhrzeit',
+        // FIXME: translation needed
+        startMonthPlaceholder: 'Start Month',
+        endMonthPlaceholder: 'End Month',
         monthBeforeYear: true,
         firstDayOfWeek: 0,
         today: 'Heute'

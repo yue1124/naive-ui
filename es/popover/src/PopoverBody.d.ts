@@ -22,10 +22,12 @@ export declare const popoverBodyProps: {
     placement: PropType<FollowerPlacement>;
     width: PropType<number | "trigger">;
     keepAliveOnHover: BooleanConstructor;
-    internalTrapFocus: BooleanConstructor;
+    scrollable: BooleanConstructor;
+    contentStyle: PropType<string | CSSProperties>;
+    headerStyle: PropType<string | CSSProperties>;
     animated: BooleanConstructor;
     onClickoutside: PropType<(e: MouseEvent) => void>;
-    /** @deprecated */
+    internalTrapFocus: BooleanConstructor;
     minWidth: NumberConstructor;
     maxWidth: NumberConstructor;
     theme: PropType<import("../../_mixins").Theme<"Popover", {
@@ -97,10 +99,12 @@ declare const _default: import("vue").DefineComponent<{
     placement: PropType<FollowerPlacement>;
     width: PropType<number | "trigger">;
     keepAliveOnHover: BooleanConstructor;
-    internalTrapFocus: BooleanConstructor;
+    scrollable: BooleanConstructor;
+    contentStyle: PropType<string | CSSProperties>;
+    headerStyle: PropType<string | CSSProperties>;
     animated: BooleanConstructor;
     onClickoutside: PropType<(e: MouseEvent) => void>;
-    /** @deprecated */
+    internalTrapFocus: BooleanConstructor;
     minWidth: NumberConstructor;
     maxWidth: NumberConstructor;
     theme: PropType<import("../../_mixins").Theme<"Popover", {
@@ -176,10 +180,12 @@ declare const _default: import("vue").DefineComponent<{
     placement: PropType<FollowerPlacement>;
     width: PropType<number | "trigger">;
     keepAliveOnHover: BooleanConstructor;
-    internalTrapFocus: BooleanConstructor;
+    scrollable: BooleanConstructor;
+    contentStyle: PropType<string | CSSProperties>;
+    headerStyle: PropType<string | CSSProperties>;
     animated: BooleanConstructor;
     onClickoutside: PropType<(e: MouseEvent) => void>;
-    /** @deprecated */
+    internalTrapFocus: BooleanConstructor;
     minWidth: NumberConstructor;
     maxWidth: NumberConstructor;
     theme: PropType<import("../../_mixins").Theme<"Popover", {
@@ -230,10 +236,11 @@ declare const _default: import("vue").DefineComponent<{
     to: string | boolean | HTMLElement;
     raw: boolean;
     overlap: boolean;
+    scrollable: boolean;
     showArrow: boolean;
     arrowPointToCenter: boolean;
     keepAliveOnHover: boolean;
-    internalTrapFocus: boolean;
     animated: boolean;
+    internalTrapFocus: boolean;
 }>;
 export default _default;

@@ -50,6 +50,8 @@ export default cB('switch', `
  color: var(--n-loading-color);
  transition: color .3s var(--n-bezier);
  `, [iconSwitchTransition({
+  left: '50%',
+  top: '50%',
   originalTransform: 'translateX(-50%) translateY(-50%)'
 })]), cE('checked, unchecked', `
  transition: color .3s var(--n-bezier);
@@ -71,21 +73,7 @@ export default cB('switch', `
  padding-left: calc(1.25 * var(--n-rail-height) - var(--n-offset));
  `), c('&:focus', [cE('rail', `
  box-shadow: var(--n-box-shadow-focus);
- `)]), cM('round', [cE('rail', {
-  borderRadius: 'calc(var(--n-rail-height) / 2)'
-}, [cE('button', {
-  borderRadius: 'calc(var(--n-button-height) / 2)'
-})])]), cNotM('disabled', [cNotM('icon', [cM('pressed', [cE('rail', [cE('button', {
-  maxWidth: 'var(--n-button-width-pressed)'
-})])]), cE('rail', [c('&:active', [cE('button', {
-  maxWidth: 'var(--n-button-width-pressed)'
-})])]), cM('active', [cM('pressed', [cE('rail', [cE('button', {
-  left: 'calc(100% - var(--n-offset) - var(--n-button-width-pressed))'
-})])]), cE('rail', [c('&:active', [cE('button', {
-  left: 'calc(100% - var(--n-offset) - var(--n-button-width-pressed))'
-})])])])])]), cM('active', [cE('rail', [cE('button', {
-  left: 'calc(100% - (var(--n-rail-height) + var(--n-button-width)) / 2)'
-})])]), cE('rail', `
+ `)]), cM('round', [cE('rail', 'border-radius: calc(var(--n-rail-height) / 2);', [cE('button', 'border-radius: calc(var(--n-button-height) / 2);')])]), cNotM('disabled', [cNotM('icon', [cM('rubber-band', [cM('pressed', [cE('rail', [cE('button', 'max-width: var(--n-button-width-pressed);')])]), cE('rail', [c('&:active', [cE('button', 'max-width: var(--n-button-width-pressed);')])]), cM('active', [cM('pressed', [cE('rail', [cE('button', 'left: calc(100% - var(--n-offset) - var(--n-button-width-pressed));')])]), cE('rail', [c('&:active', [cE('button', 'left: calc(100% - var(--n-offset) - var(--n-button-width-pressed));')])])])])])]), cM('active', [cE('rail', [cE('button', 'left: calc(100% - (var(--n-rail-height) + var(--n-button-width)) / 2)')])]), cE('rail', `
  overflow: hidden;
  height: var(--n-rail-height);
  min-width: var(--n-rail-width);
@@ -129,9 +117,9 @@ export default cB('switch', `
  opacity .3s var(--n-bezier),
  max-width .3s var(--n-bezier),
  box-shadow .3s var(--n-bezier);
- `)]), cM('active', [cE('rail', 'background-color: var(--n-rail-color-active);')]), cM('disabled', [cE('rail', `
+ `)]), cM('active', [cE('rail', 'background-color: var(--n-rail-color-active);')]), cM('loading', [cE('rail', `
+ cursor: wait;
+ `)]), cM('disabled', [cE('rail', `
  cursor: not-allowed;
  opacity: .5;
- `)]), cM('loading', [cE('rail', `
- pointer-events: none;
  `)])]);

@@ -31,6 +31,7 @@ declare const TreeNode: import("vue").DefineComponent<{
     droppingPosition: import("vue").Ref<import("./interface").DropPosition | null>;
     droppingOffsetLevel: import("vue").Ref<number>;
     indent: import("vue").Ref<number>;
+    checkboxPlacement: "left" | "right";
     contentInstRef: import("vue").Ref<ComponentPublicInstance<{}, {}, {}, {}, {}, {}, {}, {}, false, import("vue").ComponentOptionsBase<any, any, any, any, any, any, any, any, any, {}>> | null>;
     contentElRef: {
         value: HTMLElement | null;

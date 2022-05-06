@@ -5,7 +5,10 @@ import NModal from '../../modal/src/Modal';
 import { keep } from '../../_utils';
 import { NDialog } from './Dialog';
 import { dialogProps, dialogPropKeys } from './dialogProps';
-export const exposedDialogEnvProps = Object.assign(Object.assign({}, dialogProps), { closeOnEsc: { type: Boolean, default: true }, internalStyle: [String, Object], maskClosable: {
+export const exposedDialogEnvProps = Object.assign(Object.assign({}, dialogProps), { blockScroll: { type: Boolean, default: true }, closeOnEsc: { type: Boolean, default: true }, autoFocus: {
+        type: Boolean,
+        default: true
+    }, internalStyle: [String, Object], maskClosable: {
         type: Boolean,
         default: true
     }, onPositiveClick: Function, onNegativeClick: Function, onClose: Function, onMaskClick: Function });
@@ -90,7 +93,7 @@ export const NDialogEnvironment = defineComponent({
     },
     render() {
         const { handlePositiveClick, handleUpdateShow, handleNegativeClick, handleCloseClick, handleAfterLeave, handleMaskClick, to, maskClosable, show } = this;
-        return (h(NModal, { show: show, onUpdateShow: handleUpdateShow, onMaskClick: handleMaskClick, to: to, maskClosable: maskClosable, onAfterLeave: handleAfterLeave, closeOnEsc: this.closeOnEsc, internalAppear: true, internalDialog: true }, {
+        return (h(NModal, { show: show, onUpdateShow: handleUpdateShow, onMaskClick: handleMaskClick, to: to, maskClosable: maskClosable, onAfterLeave: handleAfterLeave, closeOnEsc: this.closeOnEsc, blockScroll: this.blockScroll, autoFocus: this.autoFocus, internalAppear: true, internalDialog: true }, {
             default: () => (h(NDialog, Object.assign({}, keep(this.$props, dialogPropKeys), { style: this.internalStyle, onClose: handleCloseClick, onNegativeClick: handleNegativeClick, onPositiveClick: handlePositiveClick })))
         }));
     }

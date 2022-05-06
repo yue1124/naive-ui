@@ -35,6 +35,9 @@ const drawerProps = Object.assign(Object.assign({}, useTheme.props), { show: Boo
     }, closeOnEsc: {
         type: Boolean,
         default: true
+    }, blockScroll: {
+        type: Boolean,
+        default: true
     }, 'onUpdate:show': [Function, Array], onUpdateShow: [Function, Array], onAfterEnter: Function, onAfterLeave: Function, 
     /** @deprecated */
     drawerStyle: [String, Object], drawerClass: String, target: null, onShow: Function, onHide: Function });
@@ -173,7 +176,7 @@ export default defineComponent({
                     h(Transition, { name: "fade-in-transition", appear: this.isMounted }, {
                         default: () => this.show ? (h("div", { "aria-hidden": true, class: `${mergedClsPrefix}-drawer-mask`, onClick: this.handleMaskClick })) : null
                     }),
-                    h(NDrawerBodyWrapper, Object.assign({}, this.$attrs, { class: [this.drawerClass, this.$attrs.class], style: [this.mergedBodyStyle, this.$attrs.style], contentStyle: this.contentStyle, placement: this.placement, scrollbarProps: this.scrollbarProps, show: this.show, displayDirective: this.displayDirective, nativeScrollbar: this.nativeScrollbar, onAfterEnter: this.onAfterEnter, onAfterLeave: this.onAfterLeave, trapFocus: this.trapFocus, autoFocus: this.autoFocus, onEsc: this.handleEsc }), this.$slots)), [[zindexable, { zIndex: this.zIndex, enabled: this.show }]]);
+                    h(NDrawerBodyWrapper, Object.assign({}, this.$attrs, { class: [this.drawerClass, this.$attrs.class], style: [this.mergedBodyStyle, this.$attrs.style], blockScroll: this.blockScroll, contentStyle: this.contentStyle, placement: this.placement, scrollbarProps: this.scrollbarProps, show: this.show, displayDirective: this.displayDirective, nativeScrollbar: this.nativeScrollbar, onAfterEnter: this.onAfterEnter, onAfterLeave: this.onAfterLeave, trapFocus: this.trapFocus, autoFocus: this.autoFocus, onEsc: this.handleEsc }), this.$slots)), [[zindexable, { zIndex: this.zIndex, enabled: this.show }]]);
             }
         }));
     }

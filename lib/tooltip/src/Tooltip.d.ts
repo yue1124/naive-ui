@@ -121,24 +121,27 @@ declare const tooltipProps: {
         type: BooleanConstructor;
         default: boolean;
     };
-    onClickoutside: import("vue").PropType<(e: MouseEvent) => void>;
-    internalExtraClass: {
-        type: import("vue").PropType<string[]>;
-        default: () => never[];
-    };
-    'onUpdate:show': import("vue").PropType<import("../../_utils").MaybeArray<(value: boolean) => void>>;
-    onUpdateShow: import("vue").PropType<import("../../_utils").MaybeArray<(value: boolean) => void>>;
     zIndex: NumberConstructor;
     to: {
         type: import("vue").PropType<string | boolean | HTMLElement>;
         default: undefined;
     };
+    scrollable: BooleanConstructor;
+    contentStyle: import("vue").PropType<string | import("vue").CSSProperties>;
+    headerStyle: import("vue").PropType<string | import("vue").CSSProperties>;
+    onClickoutside: import("vue").PropType<(e: MouseEvent) => void>;
+    'onUpdate:show': import("vue").PropType<import("../../_utils").MaybeArray<(value: boolean) => void>>;
+    onUpdateShow: import("vue").PropType<import("../../_utils").MaybeArray<(value: boolean) => void>>;
     internalSyncTargetWithParent: BooleanConstructor;
     internalInheritedEventHandlers: {
         type: import("vue").PropType<import("../../popover/src/Popover").TriggerEventHandlers[]>;
         default: () => never[];
     };
     internalTrapFocus: BooleanConstructor;
+    internalExtraClass: {
+        type: import("vue").PropType<string[]>;
+        default: () => never[];
+    };
     onShow: import("vue").PropType<import("../../_utils").MaybeArray<(value: boolean) => void> | undefined>;
     onHide: import("vue").PropType<import("../../_utils").MaybeArray<(value: boolean) => void> | undefined>;
     arrow: {
@@ -269,24 +272,27 @@ declare const _default: import("vue").DefineComponent<{
         type: BooleanConstructor;
         default: boolean;
     };
-    onClickoutside: import("vue").PropType<(e: MouseEvent) => void>;
-    internalExtraClass: {
-        type: import("vue").PropType<string[]>;
-        default: () => never[];
-    };
-    'onUpdate:show': import("vue").PropType<import("../../_utils").MaybeArray<(value: boolean) => void>>;
-    onUpdateShow: import("vue").PropType<import("../../_utils").MaybeArray<(value: boolean) => void>>;
     zIndex: NumberConstructor;
     to: {
         type: import("vue").PropType<string | boolean | HTMLElement>;
         default: undefined;
     };
+    scrollable: BooleanConstructor;
+    contentStyle: import("vue").PropType<string | import("vue").CSSProperties>;
+    headerStyle: import("vue").PropType<string | import("vue").CSSProperties>;
+    onClickoutside: import("vue").PropType<(e: MouseEvent) => void>;
+    'onUpdate:show': import("vue").PropType<import("../../_utils").MaybeArray<(value: boolean) => void>>;
+    onUpdateShow: import("vue").PropType<import("../../_utils").MaybeArray<(value: boolean) => void>>;
     internalSyncTargetWithParent: BooleanConstructor;
     internalInheritedEventHandlers: {
         type: import("vue").PropType<import("../../popover/src/Popover").TriggerEventHandlers[]>;
         default: () => never[];
     };
     internalTrapFocus: BooleanConstructor;
+    internalExtraClass: {
+        type: import("vue").PropType<string[]>;
+        default: () => never[];
+    };
     onShow: import("vue").PropType<import("../../_utils").MaybeArray<(value: boolean) => void> | undefined>;
     onHide: import("vue").PropType<import("../../_utils").MaybeArray<(value: boolean) => void> | undefined>;
     arrow: {
@@ -563,24 +569,27 @@ declare const _default: import("vue").DefineComponent<{
         type: BooleanConstructor;
         default: boolean;
     };
-    onClickoutside: import("vue").PropType<(e: MouseEvent) => void>;
-    internalExtraClass: {
-        type: import("vue").PropType<string[]>;
-        default: () => never[];
-    };
-    'onUpdate:show': import("vue").PropType<import("../../_utils").MaybeArray<(value: boolean) => void>>;
-    onUpdateShow: import("vue").PropType<import("../../_utils").MaybeArray<(value: boolean) => void>>;
     zIndex: NumberConstructor;
     to: {
         type: import("vue").PropType<string | boolean | HTMLElement>;
         default: undefined;
     };
+    scrollable: BooleanConstructor;
+    contentStyle: import("vue").PropType<string | import("vue").CSSProperties>;
+    headerStyle: import("vue").PropType<string | import("vue").CSSProperties>;
+    onClickoutside: import("vue").PropType<(e: MouseEvent) => void>;
+    'onUpdate:show': import("vue").PropType<import("../../_utils").MaybeArray<(value: boolean) => void>>;
+    onUpdateShow: import("vue").PropType<import("../../_utils").MaybeArray<(value: boolean) => void>>;
     internalSyncTargetWithParent: BooleanConstructor;
     internalInheritedEventHandlers: {
         type: import("vue").PropType<import("../../popover/src/Popover").TriggerEventHandlers[]>;
         default: () => never[];
     };
     internalTrapFocus: BooleanConstructor;
+    internalExtraClass: {
+        type: import("vue").PropType<string[]>;
+        default: () => never[];
+    };
     onShow: import("vue").PropType<import("../../_utils").MaybeArray<(value: boolean) => void> | undefined>;
     onHide: import("vue").PropType<import("../../_utils").MaybeArray<(value: boolean) => void> | undefined>;
     arrow: {
@@ -599,18 +608,19 @@ declare const _default: import("vue").DefineComponent<{
     raw: boolean;
     placement: import("vueuc/lib/binder/src/interface").Placement;
     overlap: boolean;
+    scrollable: boolean;
     trigger: import("../../popover").PopoverTrigger;
     showArrow: boolean;
     delay: number;
     arrowPointToCenter: boolean;
     displayDirective: "show" | "if";
     keepAliveOnHover: boolean;
-    internalTrapFocus: boolean;
     animated: boolean;
+    internalTrapFocus: boolean;
     defaultShow: boolean;
-    internalExtraClass: string[];
     internalSyncTargetWithParent: boolean;
     internalInheritedEventHandlers: import("../../popover/src/Popover").TriggerEventHandlers[];
+    internalExtraClass: string[];
     arrow: boolean | undefined;
 }>;
 export default _default;

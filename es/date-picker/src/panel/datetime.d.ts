@@ -38,39 +38,13 @@ declare const _default: import("vue").DefineComponent<{
     datePickerSlots: Readonly<{
         [name: string]: import("vue").Slot | undefined;
     }>;
-    monthScrollRef: import("vue").Ref<{
-        $el: HTMLElement;
-        containerRef: HTMLElement | null;
-        contentRef: HTMLElement | null;
-        containerScrollTop: number;
-        syncUnifiedContainer: () => void;
-        scrollTo: import("../../../_internal/scrollbar/src/ScrollBar").ScrollTo;
-        scrollBy: import("../../../_internal/scrollbar/src/ScrollBar").ScrollBy;
-        sync: () => void;
-        handleMouseEnterWrapper: () => void;
-        handleMouseLeaveWrapper: () => void;
-    } | null>;
-    yearScrollRef: import("vue").Ref<{
-        listElRef: HTMLElement;
-        itemsElRef: HTMLElement | null;
-        scrollTo: import("vueuc/lib/virtual-list/src/VirtualList").ScrollTo;
-    } | null>;
-    scrollbarInstRef: import("vue").Ref<{
-        $el: HTMLElement;
-        containerRef: HTMLElement | null;
-        contentRef: HTMLElement | null;
-        containerScrollTop: number;
-        syncUnifiedContainer: () => void;
-        scrollTo: import("../../../_internal/scrollbar/src/ScrollBar").ScrollTo;
-        scrollBy: import("../../../_internal/scrollbar/src/ScrollBar").ScrollBy;
-        sync: () => void;
-        handleMouseEnterWrapper: () => void;
-        handleMouseLeaveWrapper: () => void;
-    } | null>;
     handleQuickMonthClick: (dateItem: import("../utils").MonthItem | import("../utils").YearItem | import("../utils").QuarterItem, updatePanelValue: (value: number) => void) => void;
-    scrollPickerColumns: (value?: number | undefined) => void;
+    justifyColumnsScrollState: (value?: number | undefined) => void;
     calendarValue: import("vue").Ref<number>;
     onUpdateCalendarValue: (value: number) => void;
+    monthScrollbarRef: import("vue").Ref<import("../../../_internal").ScrollbarInst | null>;
+    yearScrollbarRef: import("vue").Ref<import("../../../_internal").ScrollbarInst | null>;
+    yearVlRef: import("vue").Ref<import("vueuc").VirtualListInst | null>;
     mergedTheme: import("vue").Ref<{
         common: {
             baseColor: string;
@@ -229,6 +203,7 @@ declare const _default: import("vue").DefineComponent<{
             calendarLeftPaddingMonth: string;
             calendarLeftPaddingYear: string;
             calendarLeftPaddingQuarter: string;
+            calendarLeftPaddingMonthrange: string;
             calendarRightPaddingDate: string;
             calendarRightPaddingDatetime: string;
             calendarRightPaddingDaterange: string;
@@ -236,6 +211,7 @@ declare const _default: import("vue").DefineComponent<{
             calendarRightPaddingMonth: string;
             calendarRightPaddingYear: string;
             calendarRightPaddingQuarter: string;
+            calendarRightPaddingMonthrange: string;
         };
         peers: {
             Input: import("../../../_mixins").Theme<"Input", {
@@ -1112,6 +1088,8 @@ declare const _default: import("vue").DefineComponent<{
         endDatePlaceholder: string;
         startDatetimePlaceholder: string;
         endDatetimePlaceholder: string;
+        startMonthPlaceholder: string;
+        endMonthPlaceholder: string;
         monthBeforeYear: boolean;
         firstDayOfWeek: 0 | 2 | 1 | 3 | 4 | 5 | 6;
         today: string;

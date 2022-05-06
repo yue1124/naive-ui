@@ -177,6 +177,7 @@ declare function usePanelCommon(props: UsePanelCommonProps): {
             calendarLeftPaddingMonth: string;
             calendarLeftPaddingYear: string;
             calendarLeftPaddingQuarter: string;
+            calendarLeftPaddingMonthrange: string;
             calendarRightPaddingDate: string;
             calendarRightPaddingDatetime: string;
             calendarRightPaddingDaterange: string;
@@ -184,6 +185,7 @@ declare function usePanelCommon(props: UsePanelCommonProps): {
             calendarRightPaddingMonth: string;
             calendarRightPaddingYear: string;
             calendarRightPaddingQuarter: string;
+            calendarRightPaddingMonthrange: string;
         };
         peers: {
             Input: import("../../../_mixins").Theme<"Input", {
@@ -1061,6 +1063,8 @@ declare function usePanelCommon(props: UsePanelCommonProps): {
         endDatePlaceholder: string;
         startDatetimePlaceholder: string;
         endDatetimePlaceholder: string;
+        startMonthPlaceholder: string;
+        endMonthPlaceholder: string;
         monthBeforeYear: boolean;
         firstDayOfWeek: 0 | 2 | 1 | 3 | 4 | 5 | 6;
         today: string;

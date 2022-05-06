@@ -90,6 +90,10 @@ declare const modalProps: {
         type: BooleanConstructor;
         default: boolean;
     };
+    blockScroll: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
     theme: PropType<import("../../_mixins").Theme<"Modal", {
         color: string;
         textColor: string;
@@ -1001,6 +1005,10 @@ declare const _default: import("vue").DefineComponent<{
         default: boolean;
     };
     closeOnEsc: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
+    blockScroll: {
         type: BooleanConstructor;
         default: boolean;
     };
@@ -1938,6 +1946,10 @@ declare const _default: import("vue").DefineComponent<{
         type: BooleanConstructor;
         default: boolean;
     };
+    blockScroll: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
     theme: PropType<import("../../_mixins").Theme<"Modal", {
         color: string;
         textColor: string;
@@ -2775,6 +2787,7 @@ declare const _default: import("vue").DefineComponent<{
     embedded: boolean;
     segmented: boolean | import("../../card/src/Card").Segmented;
     trapFocus: boolean;
+    blockScroll: boolean;
     internalDialog: boolean;
     internalAppear: boolean | undefined;
     unstableShowMask: boolean;

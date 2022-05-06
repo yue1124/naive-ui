@@ -27,7 +27,10 @@ const switchProps = Object.assign(Object.assign({}, useTheme.props), { size: {
     }, uncheckedValue: {
         type: [String, Number, Boolean],
         default: false
-    }, railStyle: Function, 
+    }, railStyle: Function, rubberBand: {
+        type: Boolean,
+        default: true
+    }, 
     /** @deprecated */
     onChange: [Function, Array] });
 export default defineComponent({
@@ -188,7 +191,8 @@ export default defineComponent({
                 mergedDisabled && `${mergedClsPrefix}-switch--disabled`,
                 this.round && `${mergedClsPrefix}-switch--round`,
                 this.loading && `${mergedClsPrefix}-switch--loading`,
-                this.pressed && `${mergedClsPrefix}-switch--pressed`
+                this.pressed && `${mergedClsPrefix}-switch--pressed`,
+                this.rubberBand && `${mergedClsPrefix}-switch--rubber-band`
             ], tabindex: !this.mergedDisabled ? 0 : undefined, style: this.cssVars, onClick: this.handleClick, onFocus: this.handleFocus, onBlur: this.handleBlur, onKeyup: this.handleKeyup, onKeydown: this.handleKeydown },
             h("div", { class: `${mergedClsPrefix}-switch__rail`, "aria-hidden": "true", style: mergedRailStyle },
                 resolveWrappedSlot(checkedSlot, (checkedSlotChildren) => resolveWrappedSlot(uncheckedSlot, (uncheckedSlotChildren) => {

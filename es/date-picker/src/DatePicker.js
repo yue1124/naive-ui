@@ -18,6 +18,7 @@ import DatetimerangePanel from './panel/datetimerange';
 import DatePanel from './panel/date';
 import DaterangePanel from './panel/daterange';
 import MonthPanel from './panel/month';
+import MonthRangePanel from './panel/monthrange';
 import style from './styles/index.cssr';
 const datePickerProps = Object.assign(Object.assign({}, useTheme.props), { to: useAdjustedTo.propTo, bordered: {
         type: Boolean,
@@ -78,6 +79,7 @@ export default defineComponent({
                 case 'year':
                     return localeRef.value.yearTypeFormat;
                 case 'month':
+                case 'monthrange':
                     return localeRef.value.monthTypeFormat;
                 case 'quarter':
                     return localeRef.value.quarterFormat;
@@ -126,7 +128,7 @@ export default defineComponent({
             return (((_b = (_a = mergedComponentPropsRef === null || mergedComponentPropsRef === void 0 ? void 0 : mergedComponentPropsRef.value) === null || _a === void 0 ? void 0 : _a.DatePicker) === null || _b === void 0 ? void 0 : _b.timePickerSize) || 'small');
         });
         const isRangeRef = computed(() => {
-            return ['daterange', 'datetimerange'].includes(props.type);
+            return ['daterange', 'datetimerange', 'monthrange'].includes(props.type);
         });
         const localizedPlacehoderRef = computed(() => {
             const { placeholder } = props;
@@ -159,6 +161,9 @@ export default defineComponent({
                 else if (props.type === 'datetimerange') {
                     return localeRef.value.startDatetimePlaceholder;
                 }
+                else if (props.type === 'monthrange') {
+                    return localeRef.value.startMonthPlaceholder;
+                }
                 return '';
             }
             else {
@@ -172,6 +177,9 @@ export default defineComponent({
                 }
                 else if (props.type === 'datetimerange') {
                     return localeRef.value.endDatetimePlaceholder;
+                }
+                else if (props.type === 'monthrange') {
+                    return localeRef.value.endMonthPlaceholder;
                 }
                 return '';
             }
@@ -206,6 +214,9 @@ export default defineComponent({
                 }
                 case 'quarter': {
                     return ['clear', 'now', 'confirm'];
+                }
+                case 'monthrange': {
+                    return ['clear', 'confirm'];
                 }
                 default: {
                     warn('data-picker', "The type is wrong, n-date-picker's type only supports `date`, `datetime`, `daterange` and `datetimerange`.");
@@ -635,16 +646,21 @@ export default defineComponent({
                     }),
                     h(VFollower, { show: this.mergedShow, containerClass: this.namespace, to: this.adjustedTo, teleportDisabled: this.adjustedTo === useAdjustedTo.tdkey, placement: this.placement }, {
                         default: () => (h(Transition, { name: "fade-in-scale-up-transition", appear: this.isMounted }, {
-                            default: () => this.mergedShow
-                                ? withDirectives(this.type === 'datetime' ? (h(DatetimePanel, Object.assign({}, commonPanelProps))) : this.type === 'daterange' ? (h(DaterangePanel, Object.assign({}, commonPanelProps))) : this.type === 'datetimerange' ? (h(DatetimerangePanel, Object.assign({}, commonPanelProps))) : this.type === 'month' ? (h(MonthPanel, Object.assign({}, commonPanelProps, { type: "month", key: "month" }))) : this.type === 'year' ? (h(MonthPanel, Object.assign({}, commonPanelProps, { type: "year", key: "year" }))) : this.type === 'quarter' ? (h(MonthPanel, Object.assign({}, commonPanelProps, { type: "quarter", key: "quarter" }))) : (h(DatePanel, Object.assign({}, commonPanelProps))), [
+                            default: () => {
+                                if (!this.mergedShow)
+                                    return null;
+                                const { type } = this;
+                                return withDirectives(type === 'datetime' ? (h(DatetimePanel, Object.assign({}, commonPanelProps))) : type === 'daterange' ? (h(DaterangePanel, Object.assign({}, commonPanelProps))) : type === 'datetimerange' ? (h(DatetimerangePanel, Object.assign({}, commonPanelProps))) : type === 'month' ||
+                                    type === 'year' ||
+                                    type === 'quarter' ? (h(MonthPanel, Object.assign({}, commonPanelProps, { type: type, key: type }))) : type === 'monthrange' ? (h(MonthRangePanel, Object.assign({}, commonPanelProps, { type: type }))) : (h(DatePanel, Object.assign({}, commonPanelProps))), [
                                     [
                                         clickoutside,
                                         this.handleClickOutside,
                                         undefined,
                                         { capture: true }
                                     ]
-                                ])
-                                : null
+                                ]);
+                            }
                         }))
                     })
                 ]

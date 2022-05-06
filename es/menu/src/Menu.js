@@ -45,14 +45,12 @@ const menuProps = Object.assign(Object.assign({}, useTheme.props), { options: {
     }, watchProps: {
         type: Array,
         default: undefined
-    }, disabled: Boolean, inverted: Boolean, 'onUpdate:expandedKeys': [Function, Array], onUpdateExpandedKeys: [Function, Array], onUpdateValue: [Function, Array], 'onUpdate:value': [Function, Array], expandIcon: Function, renderIcon: Function, renderLabel: Function, renderExtra: Function, 
-    /** TODO: deprecate it */
-    dropdownPlacement: {
+    }, disabled: Boolean, inverted: Boolean, 'onUpdate:expandedKeys': [Function, Array], onUpdateExpandedKeys: [Function, Array], onUpdateValue: [Function, Array], 'onUpdate:value': [Function, Array], expandIcon: Function, renderIcon: Function, renderLabel: Function, renderExtra: Function, dropdownProps: Object, accordion: Boolean, nodeProps: Function, 
+    // deprecated
+    items: Array, onOpenNamesChange: [Function, Array], onSelect: [Function, Array], onExpandedNamesChange: [Function, Array], expandedNames: Array, defaultExpandedNames: Array, dropdownPlacement: {
         type: String,
         default: 'bottom'
-    }, dropdownProps: Object, accordion: Boolean, 
-    // deprecated
-    items: Array, onOpenNamesChange: [Function, Array], onSelect: [Function, Array], onExpandedNamesChange: [Function, Array], expandedNames: Array, defaultExpandedNames: Array });
+    } });
 export default defineComponent({
     name: 'Menu',
     props: menuProps,

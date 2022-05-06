@@ -37,6 +37,10 @@ declare const switchProps: {
         focused: boolean;
         checked: boolean;
     }) => string | CSSProperties>;
+    readonly rubberBand: {
+        readonly type: BooleanConstructor;
+        readonly default: true;
+    };
     /** @deprecated */
     readonly onChange: PropType<MaybeArray<OnUpdateValue> | undefined>;
     readonly theme: PropType<import("../../_mixins").Theme<"Switch", {
@@ -173,6 +177,10 @@ declare const _default: import("vue").DefineComponent<{
         focused: boolean;
         checked: boolean;
     }) => string | CSSProperties>;
+    readonly rubberBand: {
+        readonly type: BooleanConstructor;
+        readonly default: true;
+    };
     /** @deprecated */
     readonly onChange: PropType<MaybeArray<OnUpdateValue> | undefined>;
     readonly theme: PropType<import("../../_mixins").Theme<"Switch", {
@@ -343,6 +351,10 @@ declare const _default: import("vue").DefineComponent<{
         focused: boolean;
         checked: boolean;
     }) => string | CSSProperties>;
+    readonly rubberBand: {
+        readonly type: BooleanConstructor;
+        readonly default: true;
+    };
     /** @deprecated */
     readonly onChange: PropType<MaybeArray<OnUpdateValue> | undefined>;
     readonly theme: PropType<import("../../_mixins").Theme<"Switch", {
@@ -450,5 +462,6 @@ declare const _default: import("vue").DefineComponent<{
     defaultValue: string | number | boolean;
     checkedValue: string | number | boolean;
     uncheckedValue: string | number | boolean;
+    rubberBand: boolean;
 }>;
 export default _default;

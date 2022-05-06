@@ -46,6 +46,10 @@ declare const drawerProps: {
         readonly type: BooleanConstructor;
         readonly default: true;
     };
+    readonly blockScroll: {
+        readonly type: BooleanConstructor;
+        readonly default: true;
+    };
     readonly 'onUpdate:show': PropType<MaybeArray<(value: boolean) => void>>;
     readonly onUpdateShow: PropType<MaybeArray<(value: boolean) => void>>;
     readonly onAfterEnter: PropType<() => void>;
@@ -168,6 +172,10 @@ declare const _default: import("vue").DefineComponent<{
         readonly default: true;
     };
     readonly closeOnEsc: {
+        readonly type: BooleanConstructor;
+        readonly default: true;
+    };
+    readonly blockScroll: {
         readonly type: BooleanConstructor;
         readonly default: true;
     };
@@ -459,6 +467,10 @@ declare const _default: import("vue").DefineComponent<{
         readonly type: BooleanConstructor;
         readonly default: true;
     };
+    readonly blockScroll: {
+        readonly type: BooleanConstructor;
+        readonly default: true;
+    };
     readonly 'onUpdate:show': PropType<MaybeArray<(value: boolean) => void>>;
     readonly onUpdateShow: PropType<MaybeArray<(value: boolean) => void>>;
     readonly onAfterEnter: PropType<() => void>;
@@ -546,6 +558,7 @@ declare const _default: import("vue").DefineComponent<{
     placement: Placement;
     displayDirective: "show" | "if";
     trapFocus: boolean;
+    blockScroll: boolean;
     maskClosable: boolean;
     closeOnEsc: boolean;
     nativeScrollbar: boolean;

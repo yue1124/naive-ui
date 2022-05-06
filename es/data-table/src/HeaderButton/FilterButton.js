@@ -25,7 +25,7 @@ export default defineComponent({
     },
     setup(props) {
         const { mergedComponentPropsRef } = useConfig();
-        const { mergedThemeRef, mergedClsPrefixRef, mergedFilterStateRef, filterMenuCssVarsRef, doUpdateFilters
+        const { mergedThemeRef, mergedClsPrefixRef, mergedFilterStateRef, filterMenuCssVarsRef, paginationBehaviorOnFilterRef, doUpdatePage, doUpdateFilters
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
          } = inject(dataTableInjectionKey);
         const showPopoverRef = ref(false);
@@ -59,6 +59,9 @@ export default defineComponent({
         function handleFilterChange(mergedFilterValue) {
             const nextFilterState = createFilterState(filterStateRef.value, props.column.key, mergedFilterValue);
             doUpdateFilters(nextFilterState, props.column);
+            if (paginationBehaviorOnFilterRef.value === 'first') {
+                doUpdatePage(1);
+            }
         }
         function handleFilterMenuCancel() {
             showPopoverRef.value = false;

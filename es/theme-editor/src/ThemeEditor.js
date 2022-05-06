@@ -1,8 +1,8 @@
 import { h, computed, defineComponent, ref, Fragment, toRaw, watch, inject } from 'vue';
 import { cloneDeep, merge } from 'lodash-es';
+import { configProviderInjectionKey } from '../../config-provider/src/context';
 import { lightTheme } from '../../themes/light';
 import { NConfigProvider } from '../../config-provider';
-import { configProviderInjectionKey } from '../../config-provider/src/context';
 import { NPopover } from '../../popover';
 import { NScrollbar } from '../../_internal';
 import { NCollapse, NCollapseItem } from '../../collapse';
@@ -14,6 +14,7 @@ import { NDivider } from '../../divider';
 import { NButton } from '../../button';
 import { NColorPicker } from '../../color-picker';
 import { NEmpty } from '../../empty';
+import { lockHtmlScrollRightCompensationRef } from '../../_utils';
 const ColorWandIcon = (h("svg", { viewBox: "0 0 16 16", fill: "none", xmlns: "http://www.w3.org/2000/svg", style: { width: '1em', height: '1em', color: 'currentColor' } },
     h("path", { d: "M13.5 1C13.7761 1 14 1.22386 14 1.5V2H14.5C14.7761 2 15 2.22386 15 2.5C15 2.77614 14.7761 3 14.5 3H14V3.5C14 3.77614 13.7761 4 13.5 4C13.2239 4 13 3.77614 13 3.5V3H12.5C12.2239 3 12 2.77614 12 2.5C12 2.22386 12.2239 2 12.5 2H13V1.5C13 1.22386 13.2239 1 13.5 1Z", fill: "currentColor" }),
     h("path", { d: "M3.5 3C3.77615 3 4 3.22386 4 3.5V4H4.5C4.77615 4 5 4.22386 5 4.5C5 4.77614 4.77615 5 4.5 5H4V5.5C4 5.77614 3.77615 6 3.5 6C3.22386 6 3 5.77614 3 5.5V5H2.5C2.22386 5 2 4.77614 2 4.5C2 4.22386 2.22386 4 2.5 4H3V3.5C3 3.22386 3.22386 3 3.5 3Z", fill: "currentColor" }),
@@ -161,7 +162,7 @@ export default defineComponent({
                                     position: 'fixed',
                                     zIndex: 10,
                                     bottom: '40px',
-                                    right: '40px',
+                                    right: `calc(40px + ${lockHtmlScrollRightCompensationRef.value})`,
                                     width: '44px',
                                     height: '44px',
                                     fontSize: '26px',
@@ -171,7 +172,7 @@ export default defineComponent({
                                     borderRadius: '50%',
                                     backgroundColor: 'var(--popover-color)',
                                     color: 'var(--text-color-2)',
-                                    transition: 'all .3s var(--cubic-bezier-ease-in-out)',
+                                    transition: 'color .3s var(--cubic-bezier-ease-in-out), background-color .3s var(--cubic-bezier-ease-in-out), box-shadow .3s var(--cubic-bezier-ease-in-out)',
                                     boxShadow: '0 2px 8px 0px rgba(0, 0, 0, .12)',
                                     cursor: 'pointer'
                                 },

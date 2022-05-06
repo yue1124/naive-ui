@@ -32,7 +32,10 @@ export default c([cB('popover', `
  font-size: var(--n-font-size);
  color: var(--n-text-color);
  box-shadow: var(--n-box-shadow);
- `, [// body transition
+ `, [c('>', [cB('scrollbar', `
+ height: inherit;
+ max-height: inherit;
+ `)]), // body transition
 c('&.popover-transition-enter-from, &.popover-transition-leave-to', `
  opacity: 0;
  transform: scale(.85);
@@ -50,13 +53,13 @@ c('&.popover-transition-enter-from, &.popover-transition-leave-to', `
  `), cNotM('raw', `
  background-color: var(--n-color);
  border-radius: var(--n-border-radius);
- `, [cNotM('show-header', 'padding: var(--n-padding);')]), cE('header', `
+ `, [cNotM('scrollable', [cNotM('show-header', 'padding: var(--n-padding);')])]), cE('header', `
  padding: var(--n-padding);
  border-bottom: 1px solid var(--n-divider-color);
  transition: border-color .3s var(--n-bezier);
- `), cE('content', `
+ `), cM('scrollable, show-header', [cE('content', `
  padding: var(--n-padding);
- `), cB('popover-arrow-wrapper', `
+ `)]), cB('popover-arrow-wrapper', `
  position: absolute;
  overflow: hidden;
  pointer-events: none;

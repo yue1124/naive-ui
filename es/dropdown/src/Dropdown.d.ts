@@ -308,24 +308,27 @@ declare const dropdownProps: {
         type: BooleanConstructor;
         default: boolean;
     };
-    readonly onClickoutside: PropType<(e: MouseEvent) => void>;
-    readonly internalExtraClass: {
-        type: PropType<string[]>;
-        default: () => never[];
-    };
-    readonly 'onUpdate:show': PropType<MaybeArray<(value: boolean) => void>>;
-    readonly onUpdateShow: PropType<MaybeArray<(value: boolean) => void>>;
     readonly zIndex: NumberConstructor;
     readonly to: {
         type: PropType<string | boolean | HTMLElement>;
         default: undefined;
     };
+    readonly scrollable: BooleanConstructor;
+    readonly contentStyle: PropType<string | import("vue").CSSProperties>;
+    readonly headerStyle: PropType<string | import("vue").CSSProperties>;
+    readonly onClickoutside: PropType<(e: MouseEvent) => void>;
+    readonly 'onUpdate:show': PropType<MaybeArray<(value: boolean) => void>>;
+    readonly onUpdateShow: PropType<MaybeArray<(value: boolean) => void>>;
     readonly internalSyncTargetWithParent: BooleanConstructor;
     readonly internalInheritedEventHandlers: {
         type: PropType<import("../../popover/src/Popover").TriggerEventHandlers[]>;
         default: () => never[];
     };
     readonly internalTrapFocus: BooleanConstructor;
+    readonly internalExtraClass: {
+        type: PropType<string[]>;
+        default: () => never[];
+    };
     readonly onShow: PropType<MaybeArray<(value: boolean) => void> | undefined>;
     readonly onHide: PropType<MaybeArray<(value: boolean) => void> | undefined>;
     readonly arrow: {
@@ -626,24 +629,27 @@ declare const _default: import("vue").DefineComponent<{
         type: BooleanConstructor;
         default: boolean;
     };
-    readonly onClickoutside: PropType<(e: MouseEvent) => void>;
-    readonly internalExtraClass: {
-        type: PropType<string[]>;
-        default: () => never[];
-    };
-    readonly 'onUpdate:show': PropType<MaybeArray<(value: boolean) => void>>;
-    readonly onUpdateShow: PropType<MaybeArray<(value: boolean) => void>>;
     readonly zIndex: NumberConstructor;
     readonly to: {
         type: PropType<string | boolean | HTMLElement>;
         default: undefined;
     };
+    readonly scrollable: BooleanConstructor;
+    readonly contentStyle: PropType<string | import("vue").CSSProperties>;
+    readonly headerStyle: PropType<string | import("vue").CSSProperties>;
+    readonly onClickoutside: PropType<(e: MouseEvent) => void>;
+    readonly 'onUpdate:show': PropType<MaybeArray<(value: boolean) => void>>;
+    readonly onUpdateShow: PropType<MaybeArray<(value: boolean) => void>>;
     readonly internalSyncTargetWithParent: BooleanConstructor;
     readonly internalInheritedEventHandlers: {
         type: PropType<import("../../popover/src/Popover").TriggerEventHandlers[]>;
         default: () => never[];
     };
     readonly internalTrapFocus: BooleanConstructor;
+    readonly internalExtraClass: {
+        type: PropType<string[]>;
+        default: () => never[];
+    };
     readonly onShow: PropType<MaybeArray<(value: boolean) => void> | undefined>;
     readonly onHide: PropType<MaybeArray<(value: boolean) => void> | undefined>;
     readonly arrow: {
@@ -1132,24 +1138,27 @@ declare const _default: import("vue").DefineComponent<{
         type: BooleanConstructor;
         default: boolean;
     };
-    readonly onClickoutside: PropType<(e: MouseEvent) => void>;
-    readonly internalExtraClass: {
-        type: PropType<string[]>;
-        default: () => never[];
-    };
-    readonly 'onUpdate:show': PropType<MaybeArray<(value: boolean) => void>>;
-    readonly onUpdateShow: PropType<MaybeArray<(value: boolean) => void>>;
     readonly zIndex: NumberConstructor;
     readonly to: {
         type: PropType<string | boolean | HTMLElement>;
         default: undefined;
     };
+    readonly scrollable: BooleanConstructor;
+    readonly contentStyle: PropType<string | import("vue").CSSProperties>;
+    readonly headerStyle: PropType<string | import("vue").CSSProperties>;
+    readonly onClickoutside: PropType<(e: MouseEvent) => void>;
+    readonly 'onUpdate:show': PropType<MaybeArray<(value: boolean) => void>>;
+    readonly onUpdateShow: PropType<MaybeArray<(value: boolean) => void>>;
     readonly internalSyncTargetWithParent: BooleanConstructor;
     readonly internalInheritedEventHandlers: {
         type: PropType<import("../../popover/src/Popover").TriggerEventHandlers[]>;
         default: () => never[];
     };
     readonly internalTrapFocus: BooleanConstructor;
+    readonly internalExtraClass: {
+        type: PropType<string[]>;
+        default: () => never[];
+    };
     readonly onShow: PropType<MaybeArray<(value: boolean) => void> | undefined>;
     readonly onHide: PropType<MaybeArray<(value: boolean) => void> | undefined>;
     readonly arrow: {
@@ -1171,18 +1180,19 @@ declare const _default: import("vue").DefineComponent<{
     placement: FollowerPlacement;
     overlap: boolean;
     keyField: string;
+    scrollable: boolean;
     trigger: import("../../popover").PopoverTrigger;
     showArrow: boolean;
     delay: number;
     arrowPointToCenter: boolean;
     displayDirective: "show" | "if";
     keepAliveOnHover: boolean;
-    internalTrapFocus: boolean;
     animated: boolean;
+    internalTrapFocus: boolean;
     defaultShow: boolean;
-    internalExtraClass: string[];
     internalSyncTargetWithParent: boolean;
     internalInheritedEventHandlers: import("../../popover/src/Popover").TriggerEventHandlers[];
+    internalExtraClass: string[];
     arrow: boolean | undefined;
     labelField: string;
     keyboard: boolean;

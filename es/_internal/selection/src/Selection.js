@@ -502,7 +502,7 @@ export default defineComponent({
                     maxTagCountResponsive ? null : input,
                     suffix));
                 body = (h(Fragment, null,
-                    useMaxTagCount ? (h(NPopover, Object.assign({}, popoverProps), {
+                    useMaxTagCount ? (h(NPopover, Object.assign({}, popoverProps, { scrollable: true }), {
                         trigger: () => popoverTrigger,
                         default: renderPopover
                     })) : (popoverTrigger),
@@ -513,7 +513,7 @@ export default defineComponent({
                     tags,
                     suffix));
                 body = (h(Fragment, null,
-                    useMaxTagCount ? (h(NPopover, Object.assign({}, popoverProps), {
+                    useMaxTagCount ? (h(NPopover, Object.assign({}, popoverProps, { scrollable: true, style: "height: calc(var(--v-target-height) * 6.6);" }), {
                         trigger: () => popoverTrigger,
                         default: renderPopover
                     })) : (popoverTrigger),

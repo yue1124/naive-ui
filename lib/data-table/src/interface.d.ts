@@ -35,6 +35,7 @@ export declare type Ellipsis = boolean | EllipsisProps;
 export interface CommonColumnInfo<T = InternalRowData> {
     fixed?: 'left' | 'right';
     width?: number | string;
+    minWidth?: number | string;
     className?: string;
     align?: 'left' | 'center' | 'right';
     ellipsis?: Ellipsis;
@@ -49,7 +50,7 @@ export declare type TableColumnGroup<T = InternalRowData> = {
     key: ColumnKey;
     children: Array<TableBaseColumn<T>>;
     filterOptions?: never;
-} & CommonColumnInfo;
+} & CommonColumnInfo<T>;
 export declare type TableBaseColumn<T = InternalRowData> = {
     title?: TableColumnTitle;
     titleColSpan?: number;
@@ -74,7 +75,7 @@ export declare type TableBaseColumn<T = InternalRowData> = {
     renderFilterMenu?: RenderFilterMenu;
     colSpan?: (rowData: T, rowIndex: number) => number;
     rowSpan?: (rowData: T, rowIndex: number) => number;
-} & CommonColumnInfo;
+} & CommonColumnInfo<T>;
 export declare type TableSelectionColumn<T = InternalRowData> = {
     type: 'selection';
     disabled?: (row: T) => boolean;
@@ -86,7 +87,7 @@ export declare type TableSelectionColumn<T = InternalRowData> = {
     filterOptionValue?: never;
     colSpan?: never;
     rowSpan?: never;
-} & CommonColumnInfo;
+} & CommonColumnInfo<T>;
 export declare type RenderExpand<T = InternalRowData> = (row: T, index: number) => VNodeChild;
 export declare type Expandable<T = InternalRowData> = (row: T, index: number) => boolean;
 export interface TableExpandColumn<T = InternalRowData> extends Omit<TableSelectionColumn<T>, 'type'> {
@@ -157,6 +158,8 @@ export interface DataTableInjection {
     stripedRef: Ref<boolean>;
     onLoadRef: Ref<DataTableOnLoad | undefined>;
     loadingKeySetRef: Ref<Set<RowKey>>;
+    paginationBehaviorOnFilterRef: Ref<'current' | 'first'>;
+    doUpdatePage: (page: number) => void;
     doUpdateExpandedRowKeys: (keys: RowKey[]) => void;
     doUpdateFilters: (filters: FilterState, sourceColumn: TableBaseColumn) => void;
     deriveNextSorter: (sorter: SortState | null) => void;

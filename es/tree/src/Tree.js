@@ -100,6 +100,9 @@ const treeProps = Object.assign(Object.assign(Object.assign(Object.assign({}, us
     }, animated: {
         type: Boolean,
         default: true
+    }, checkboxPlacement: {
+        type: String,
+        default: 'left'
     }, virtualScroll: Boolean, watchProps: Array, renderLabel: Function, renderPrefix: Function, renderSuffix: Function, renderSwitcherIcon: Function, nodeProps: Function, onDragenter: [Function, Array], onDragleave: [Function, Array], onDragend: [Function, Array], onDragstart: [Function, Array], onDragover: [Function, Array], onDrop: [Function, Array], onUpdateCheckedKeys: [Function, Array], 'onUpdate:checkedKeys': [Function, Array], onUpdateSelectedKeys: [Function, Array], 'onUpdate:selectedKeys': [Function, Array] }), treeSharedProps), { 
     // internal props for tree-select
     internalTreeSelect: Boolean, internalScrollable: Boolean, internalScrollablePadding: String, 
@@ -1008,6 +1011,7 @@ export default defineComponent({
             blockLineRef: toRef(props, 'blockLine'),
             indentRef: toRef(props, 'indent'),
             cascadeRef: toRef(props, 'cascade'),
+            checkboxPlacementRef: props.checkboxPlacement,
             droppingMouseNodeRef,
             droppingNodeParentRef,
             draggingNodeRef,

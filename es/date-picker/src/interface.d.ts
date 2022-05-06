@@ -1,4 +1,4 @@
-import { Ref, Slots } from 'vue';
+import { Ref, Slots, UnwrapNestedRefs } from 'vue';
 import { VirtualListInst } from 'vueuc';
 import { NLocale, NDateLocale } from '../../locales';
 import type { ScrollbarInst } from '../../_internal';
@@ -33,10 +33,21 @@ export declare type OnPanelUpdateValue = (value: number & (number | null) & [
 ] & ([number, number] | null), doUpdate: boolean) => void;
 export declare type OnPanelUpdateValueImpl = (value: Value | null, doUpdate: boolean) => void;
 export declare type OnClose = (disableUpdateOnClose: boolean) => void;
-export interface PanelRef {
+export interface RangePanelChildComponentRefs {
+    startYearScrollbarRef: Ref<ScrollbarInst | null>;
+    endYearScrollbarRef: Ref<ScrollbarInst | null>;
+    startMonthScrollbarRef: Ref<ScrollbarInst | null>;
+    endMonthScrollbarRef: Ref<ScrollbarInst | null>;
+    startYearVlRef: Ref<VirtualListInst | null>;
+    endYearVlRef: Ref<VirtualListInst | null>;
+}
+export interface PanelChildComponentRefs {
+    monthScrollbarRef: Ref<ScrollbarInst | null>;
+    yearScrollbarRef: Ref<ScrollbarInst | null>;
+    yearVlRef: Ref<VirtualListInst | null>;
+}
+export interface PanelRef extends Partial<UnwrapNestedRefs<PanelChildComponentRefs & RangePanelChildComponentRefs>> {
     $el: HTMLElement;
-    monthScrollRef?: ScrollbarInst | null;
-    yearScrollRef?: VirtualListInst | null;
 }
 export declare type FirstDayOfWeek = 0 | 1 | 2 | 3 | 4 | 5 | 6;
 export declare type DatePickerInjection = {

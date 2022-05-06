@@ -1,4 +1,4 @@
-import { h, defineComponent, onMounted, nextTick } from 'vue';
+import { h, defineComponent, onMounted } from 'vue';
 import { VirtualList } from 'vueuc';
 import { NButton, NxButton } from '../../../button';
 import { NBaseFocusDetector, NScrollbar } from '../../../_internal';
@@ -46,7 +46,7 @@ export default defineComponent({
                 } }, getRenderContent(item)));
         };
         onMounted(() => {
-            void nextTick(useCalendarRef.scrollPickerColumns);
+            useCalendarRef.justifyColumnsScrollState();
         });
         return Object.assign(Object.assign({}, useCalendarRef), { renderItem });
     },
@@ -59,15 +59,15 @@ export default defineComponent({
                 this.themeClass
             ], onFocus: this.handlePanelFocus, onKeydown: this.handlePanelKeyDown },
             h("div", { class: `${mergedClsPrefix}-date-panel-month-calendar` },
-                h(NScrollbar, { ref: "scrollbarInstRef", class: `${mergedClsPrefix}-date-panel-month-calendar__picker-col`, theme: mergedTheme.peers.Scrollbar, themeOverrides: mergedTheme.peerOverrides.Scrollbar, container: this.virtualListContainer, content: this.virtualListContent, horizontalRailStyle: { zIndex: 1 }, verticalRailStyle: { zIndex: 1 } }, {
-                    default: () => (h(VirtualList, { ref: "yearScrollRef", items: this.yearArray, itemSize: MONTH_ITEM_HEIGHT, showScrollbar: false, keyField: "ts", onScroll: this.handleVirtualListScroll, paddingBottom: 4 }, {
+                h(NScrollbar, { ref: "yearScrollbarRef", class: `${mergedClsPrefix}-date-panel-month-calendar__picker-col`, theme: mergedTheme.peers.Scrollbar, themeOverrides: mergedTheme.peerOverrides.Scrollbar, container: this.virtualListContainer, content: this.virtualListContent, horizontalRailStyle: { zIndex: 1 }, verticalRailStyle: { zIndex: 1 } }, {
+                    default: () => (h(VirtualList, { ref: "yearVlRef", items: this.yearArray, itemSize: MONTH_ITEM_HEIGHT, showScrollbar: false, keyField: "ts", onScroll: this.handleVirtualListScroll, paddingBottom: 4 }, {
                         default: ({ item, index }) => {
                             return renderItem(item, index, mergedClsPrefix);
                         }
                     }))
                 }),
                 type === 'month' || type === 'quarter' ? (h("div", { class: `${mergedClsPrefix}-date-panel-month-calendar__picker-col` },
-                    h(NScrollbar, { ref: "monthScrollRef", theme: mergedTheme.peers.Scrollbar, themeOverrides: mergedTheme.peerOverrides.Scrollbar }, {
+                    h(NScrollbar, { ref: "monthScrollbarRef", theme: mergedTheme.peers.Scrollbar, themeOverrides: mergedTheme.peerOverrides.Scrollbar }, {
                         default: () => [
                             (type === 'month'
                                 ? this.monthArray

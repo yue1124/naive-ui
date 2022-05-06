@@ -159,8 +159,14 @@ export function useTableData(props, { dataRelatedColsRef }) {
             return undefined;
         return pagination.pageSize;
     });
-    const mergedCurrentPageRef = useMergedState(controlledCurrentPageRef, uncontrolledCurrentPageRef);
+    const _mergedCurrentPageRef = useMergedState(controlledCurrentPageRef, uncontrolledCurrentPageRef);
     const mergedPageSizeRef = useMergedState(controlledPageSizeRef, uncontrolledPageSizeRef);
+    const boundedMergedCurrentPageRef = useMemo(() => {
+        const page = _mergedCurrentPageRef.value;
+        return props.remote
+            ? page
+            : Math.max(1, Math.min(Math.ceil(filteredDataRef.value.length / mergedPageSizeRef.value), page));
+    });
     const mergedPageCountRef = computed(() => {
         const { pagination } = props;
         if (pagination) {
@@ -176,7 +182,7 @@ export function useTableData(props, { dataRelatedColsRef }) {
         if (!props.pagination)
             return sortedDataRef.value;
         const pageSize = mergedPageSizeRef.value;
-        const startIndex = (mergedCurrentPageRef.value - 1) * pageSize;
+        const startIndex = (boundedMergedCurrentPageRef.value - 1) * pageSize;
         return sortedDataRef.value.slice(startIndex, startIndex + pageSize);
     });
     const rawPaginatedDataRef = computed(() => {
@@ -227,7 +233,7 @@ export function useTableData(props, { dataRelatedColsRef }) {
             // writing merged props after pagination to avoid
             // pagination[key] === undefined
             // key still exists but value is undefined
-            page: mergedCurrentPageRef.value, pageSize: mergedPageSizeRef.value, pageCount: mergedItemCountRef.value === undefined
+            page: boundedMergedCurrentPageRef.value, pageSize: mergedPageSizeRef.value, pageCount: mergedItemCountRef.value === undefined
                 ? mergedPageCountRef.value
                 : undefined, itemCount: mergedItemCountRef.value });
     });
@@ -286,7 +292,7 @@ export function useTableData(props, { dataRelatedColsRef }) {
     }
     return {
         treeMateRef,
-        mergedCurrentPageRef,
+        mergedCurrentPageRef: boundedMergedCurrentPageRef,
         mergedPaginationRef,
         paginatedDataRef,
         rawPaginatedDataRef,

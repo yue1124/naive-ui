@@ -81,6 +81,7 @@ declare const _default: import("vue").DefineComponent<{
         type: BooleanConstructor;
         default: boolean;
     };
+    blockScroll: BooleanConstructor;
 }, {
     mergedTheme: import("vue").Ref<{
         common: {
@@ -790,6 +791,7 @@ declare const _default: import("vue").DefineComponent<{
         type: BooleanConstructor;
         default: boolean;
     };
+    blockScroll: BooleanConstructor;
 }>>, {
     type: "default" | "error" | "info" | "success" | "warning";
     size: "small" | "medium" | "large" | "huge";
@@ -802,5 +804,6 @@ declare const _default: import("vue").DefineComponent<{
     embedded: boolean;
     segmented: boolean | import("../../card/src/Card").Segmented;
     trapFocus: boolean;
+    blockScroll: boolean;
 }>;
 export default _default;

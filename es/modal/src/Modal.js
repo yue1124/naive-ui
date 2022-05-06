@@ -31,7 +31,7 @@ const modalProps = Object.assign(Object.assign(Object.assign(Object.assign({}, u
     }, closeOnEsc: {
         type: Boolean,
         default: true
-    } }), presetProps), { 
+    }, blockScroll: { type: Boolean, default: true } }), presetProps), { 
     // events
     onEsc: Function, 'onUpdate:show': [Function, Array], onUpdateShow: [Function, Array], onAfterEnter: Function, onBeforeLeave: Function, onAfterLeave: Function, onClose: Function, onPositiveClick: Function, onNegativeClick: Function, onMaskClick: Function, 
     // private
@@ -223,7 +223,7 @@ export default defineComponent({
                             return this.show ? (h("div", { "aria-hidden": true, ref: "containerRef", class: `${mergedClsPrefix}-modal-mask` })) : null;
                         }
                     })) : null,
-                    h(NModalBodyWrapper, Object.assign({ style: this.overlayStyle }, this.$attrs, { ref: "bodyWrapper", displayDirective: this.displayDirective, show: this.show, preset: this.preset, autoFocus: this.autoFocus, trapFocus: this.trapFocus }, this.presetProps, { onEsc: this.handleEsc, onClose: this.handleCloseClick, onNegativeClick: this.handleNegativeClick, onPositiveClick: this.handlePositiveClick, onBeforeLeave: this.handleBeforeLeave, onAfterEnter: this.onAfterEnter, onAfterLeave: this.handleAfterLeave, onClickoutside: this.handleClickoutside }), this.$slots)), [
+                    h(NModalBodyWrapper, Object.assign({ style: this.overlayStyle }, this.$attrs, { ref: "bodyWrapper", displayDirective: this.displayDirective, show: this.show, preset: this.preset, autoFocus: this.autoFocus, trapFocus: this.trapFocus, blockScroll: this.blockScroll }, this.presetProps, { onEsc: this.handleEsc, onClose: this.handleCloseClick, onNegativeClick: this.handleNegativeClick, onPositiveClick: this.handlePositiveClick, onBeforeLeave: this.handleBeforeLeave, onAfterEnter: this.onAfterEnter, onAfterLeave: this.handleAfterLeave, onClickoutside: this.handleClickoutside }), this.$slots)), [
                     [
                         zindexable,
                         {

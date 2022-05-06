@@ -99,7 +99,7 @@ export default cB('tree', `
  align-items: center;
  justify-content: center;
  margin-right: 4px;
- `), cM('checkable', [cB('tree-node-content', `
+ `, [cM('right', 'margin-left: 4px;')]), cM('checkable', [cB('tree-node-content', `
  padding: 0 6px;
  `)]), cB('tree-node-content', `
  position: relative;

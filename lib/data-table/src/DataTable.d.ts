@@ -75,6 +75,10 @@ export declare const dataTableProps: {
         readonly default: 16;
     };
     readonly flexHeight: BooleanConstructor;
+    readonly paginationBehaviorOnFilter: {
+        readonly type: PropType<"first" | "current">;
+        readonly default: "current";
+    };
     readonly onLoad: PropType<DataTableOnLoad>;
     readonly 'onUpdate:page': PropType<MaybeArray<(page: number) => void> | undefined>;
     readonly onUpdatePage: PropType<MaybeArray<(page: number) => void> | undefined>;
@@ -1984,6 +1988,10 @@ declare const _default: import("vue").DefineComponent<{
         readonly default: 16;
     };
     readonly flexHeight: BooleanConstructor;
+    readonly paginationBehaviorOnFilter: {
+        readonly type: PropType<"first" | "current">;
+        readonly default: "current";
+    };
     readonly onLoad: PropType<DataTableOnLoad>;
     readonly 'onUpdate:page': PropType<MaybeArray<(page: number) => void> | undefined>;
     readonly onUpdatePage: PropType<MaybeArray<(page: number) => void> | undefined>;
@@ -4908,6 +4916,10 @@ declare const _default: import("vue").DefineComponent<{
         readonly default: 16;
     };
     readonly flexHeight: BooleanConstructor;
+    readonly paginationBehaviorOnFilter: {
+        readonly type: PropType<"first" | "current">;
+        readonly default: "current";
+    };
     readonly onLoad: PropType<DataTableOnLoad>;
     readonly 'onUpdate:page': PropType<MaybeArray<(page: number) => void> | undefined>;
     readonly onUpdatePage: PropType<MaybeArray<(page: number) => void> | undefined>;
@@ -6763,5 +6775,6 @@ declare const _default: import("vue").DefineComponent<{
     childrenKey: string;
     indent: number;
     flexHeight: boolean;
+    paginationBehaviorOnFilter: "first" | "current";
 }>;
 export default _default;

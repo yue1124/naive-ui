@@ -41,6 +41,9 @@ const koKR = {
         endDatePlaceholder: '종료 날짜',
         startDatetimePlaceholder: '시작 날짜 및 시간',
         endDatetimePlaceholder: '종료 날짜 및 시간',
+        // FIXME: translation needed
+        startMonthPlaceholder: 'Start Month',
+        endMonthPlaceholder: 'End Month',
         monthBeforeYear: false,
         firstDayOfWeek: 6,
         today: '오늘'

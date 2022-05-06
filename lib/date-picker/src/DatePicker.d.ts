@@ -114,6 +114,7 @@ declare const datePickerProps: {
         calendarLeftPaddingMonth: string;
         calendarLeftPaddingYear: string;
         calendarLeftPaddingQuarter: string;
+        calendarLeftPaddingMonthrange: string;
         calendarRightPaddingDate: string;
         calendarRightPaddingDatetime: string;
         calendarRightPaddingDaterange: string;
@@ -121,6 +122,7 @@ declare const datePickerProps: {
         calendarRightPaddingMonth: string;
         calendarRightPaddingYear: string;
         calendarRightPaddingQuarter: string;
+        calendarRightPaddingMonthrange: string;
     }, {
         Input: import("../../_mixins").Theme<"Input", {
             countTextColor: string;
@@ -726,6 +728,7 @@ declare const datePickerProps: {
         calendarLeftPaddingMonth: string;
         calendarLeftPaddingYear: string;
         calendarLeftPaddingQuarter: string;
+        calendarLeftPaddingMonthrange: string;
         calendarRightPaddingDate: string;
         calendarRightPaddingDatetime: string;
         calendarRightPaddingDaterange: string;
@@ -733,6 +736,7 @@ declare const datePickerProps: {
         calendarRightPaddingMonth: string;
         calendarRightPaddingYear: string;
         calendarRightPaddingQuarter: string;
+        calendarRightPaddingMonthrange: string;
     }, {
         Input: import("../../_mixins").Theme<"Input", {
             countTextColor: string;
@@ -1338,6 +1342,7 @@ declare const datePickerProps: {
         calendarLeftPaddingMonth: string;
         calendarLeftPaddingYear: string;
         calendarLeftPaddingQuarter: string;
+        calendarLeftPaddingMonthrange: string;
         calendarRightPaddingDate: string;
         calendarRightPaddingDatetime: string;
         calendarRightPaddingDaterange: string;
@@ -1345,6 +1350,7 @@ declare const datePickerProps: {
         calendarRightPaddingMonth: string;
         calendarRightPaddingYear: string;
         calendarRightPaddingQuarter: string;
+        calendarRightPaddingMonthrange: string;
     }, {
         Input: import("../../_mixins").Theme<"Input", {
             countTextColor: string;
@@ -2013,6 +2019,7 @@ declare const _default: import("vue").DefineComponent<{
         calendarLeftPaddingMonth: string;
         calendarLeftPaddingYear: string;
         calendarLeftPaddingQuarter: string;
+        calendarLeftPaddingMonthrange: string;
         calendarRightPaddingDate: string;
         calendarRightPaddingDatetime: string;
         calendarRightPaddingDaterange: string;
@@ -2020,6 +2027,7 @@ declare const _default: import("vue").DefineComponent<{
         calendarRightPaddingMonth: string;
         calendarRightPaddingYear: string;
         calendarRightPaddingQuarter: string;
+        calendarRightPaddingMonthrange: string;
     }, {
         Input: import("../../_mixins").Theme<"Input", {
             countTextColor: string;
@@ -2625,6 +2633,7 @@ declare const _default: import("vue").DefineComponent<{
         calendarLeftPaddingMonth: string;
         calendarLeftPaddingYear: string;
         calendarLeftPaddingQuarter: string;
+        calendarLeftPaddingMonthrange: string;
         calendarRightPaddingDate: string;
         calendarRightPaddingDatetime: string;
         calendarRightPaddingDaterange: string;
@@ -2632,6 +2641,7 @@ declare const _default: import("vue").DefineComponent<{
         calendarRightPaddingMonth: string;
         calendarRightPaddingYear: string;
         calendarRightPaddingQuarter: string;
+        calendarRightPaddingMonthrange: string;
     }, {
         Input: import("../../_mixins").Theme<"Input", {
             countTextColor: string;
@@ -3237,6 +3247,7 @@ declare const _default: import("vue").DefineComponent<{
         calendarLeftPaddingMonth: string;
         calendarLeftPaddingYear: string;
         calendarLeftPaddingQuarter: string;
+        calendarLeftPaddingMonthrange: string;
         calendarRightPaddingDate: string;
         calendarRightPaddingDatetime: string;
         calendarRightPaddingDaterange: string;
@@ -3244,6 +3255,7 @@ declare const _default: import("vue").DefineComponent<{
         calendarRightPaddingMonth: string;
         calendarRightPaddingYear: string;
         calendarRightPaddingQuarter: string;
+        calendarRightPaddingMonthrange: string;
     }, {
         Input: import("../../_mixins").Theme<"Input", {
             countTextColor: string;
@@ -3809,7 +3821,7 @@ declare const _default: import("vue").DefineComponent<{
     pendingValue: Ref<Value | null>;
     panelInstRef: Ref<{
         $el: HTMLElement;
-        monthScrollRef?: {
+        monthScrollbarRef?: {
             $el: HTMLElement;
             containerRef: HTMLElement | null;
             contentRef: HTMLElement | null;
@@ -3821,7 +3833,77 @@ declare const _default: import("vue").DefineComponent<{
             handleMouseEnterWrapper: () => void;
             handleMouseLeaveWrapper: () => void;
         } | null | undefined;
-        yearScrollRef?: {
+        yearScrollbarRef?: {
+            $el: HTMLElement;
+            containerRef: HTMLElement | null;
+            contentRef: HTMLElement | null;
+            containerScrollTop: number;
+            syncUnifiedContainer: () => void;
+            scrollTo: import("../../_internal/scrollbar/src/ScrollBar").ScrollTo;
+            scrollBy: import("../../_internal/scrollbar/src/ScrollBar").ScrollBy;
+            sync: () => void;
+            handleMouseEnterWrapper: () => void;
+            handleMouseLeaveWrapper: () => void;
+        } | null | undefined;
+        yearVlRef?: {
+            listElRef: HTMLElement;
+            itemsElRef: HTMLElement | null;
+            scrollTo: import("vueuc/lib/virtual-list/src/VirtualList").ScrollTo;
+        } | null | undefined;
+        startYearScrollbarRef?: {
+            $el: HTMLElement;
+            containerRef: HTMLElement | null;
+            contentRef: HTMLElement | null;
+            containerScrollTop: number;
+            syncUnifiedContainer: () => void;
+            scrollTo: import("../../_internal/scrollbar/src/ScrollBar").ScrollTo;
+            scrollBy: import("../../_internal/scrollbar/src/ScrollBar").ScrollBy;
+            sync: () => void;
+            handleMouseEnterWrapper: () => void;
+            handleMouseLeaveWrapper: () => void;
+        } | null | undefined;
+        endYearScrollbarRef?: {
+            $el: HTMLElement;
+            containerRef: HTMLElement | null;
+            contentRef: HTMLElement | null;
+            containerScrollTop: number;
+            syncUnifiedContainer: () => void;
+            scrollTo: import("../../_internal/scrollbar/src/ScrollBar").ScrollTo;
+            scrollBy: import("../../_internal/scrollbar/src/ScrollBar").ScrollBy;
+            sync: () => void;
+            handleMouseEnterWrapper: () => void;
+            handleMouseLeaveWrapper: () => void;
+        } | null | undefined;
+        startMonthScrollbarRef?: {
+            $el: HTMLElement;
+            containerRef: HTMLElement | null;
+            contentRef: HTMLElement | null;
+            containerScrollTop: number;
+            syncUnifiedContainer: () => void;
+            scrollTo: import("../../_internal/scrollbar/src/ScrollBar").ScrollTo;
+            scrollBy: import("../../_internal/scrollbar/src/ScrollBar").ScrollBy;
+            sync: () => void;
+            handleMouseEnterWrapper: () => void;
+            handleMouseLeaveWrapper: () => void;
+        } | null | undefined;
+        endMonthScrollbarRef?: {
+            $el: HTMLElement;
+            containerRef: HTMLElement | null;
+            contentRef: HTMLElement | null;
+            containerScrollTop: number;
+            syncUnifiedContainer: () => void;
+            scrollTo: import("../../_internal/scrollbar/src/ScrollBar").ScrollTo;
+            scrollBy: import("../../_internal/scrollbar/src/ScrollBar").ScrollBy;
+            sync: () => void;
+            handleMouseEnterWrapper: () => void;
+            handleMouseLeaveWrapper: () => void;
+        } | null | undefined;
+        startYearVlRef?: {
+            listElRef: HTMLElement;
+            itemsElRef: HTMLElement | null;
+            scrollTo: import("vueuc/lib/virtual-list/src/VirtualList").ScrollTo;
+        } | null | undefined;
+        endYearVlRef?: {
             listElRef: HTMLElement;
             itemsElRef: HTMLElement | null;
             scrollTo: import("vueuc/lib/virtual-list/src/VirtualList").ScrollTo;
@@ -4020,6 +4102,7 @@ declare const _default: import("vue").DefineComponent<{
             calendarLeftPaddingMonth: string;
             calendarLeftPaddingYear: string;
             calendarLeftPaddingQuarter: string;
+            calendarLeftPaddingMonthrange: string;
             calendarRightPaddingDate: string;
             calendarRightPaddingDatetime: string;
             calendarRightPaddingDaterange: string;
@@ -4027,6 +4110,7 @@ declare const _default: import("vue").DefineComponent<{
             calendarRightPaddingMonth: string;
             calendarRightPaddingYear: string;
             calendarRightPaddingQuarter: string;
+            calendarRightPaddingMonthrange: string;
         };
         peers: {
             Input: import("../../_mixins").Theme<"Input", {
@@ -5040,6 +5124,7 @@ declare const _default: import("vue").DefineComponent<{
         calendarLeftPaddingMonth: string;
         calendarLeftPaddingYear: string;
         calendarLeftPaddingQuarter: string;
+        calendarLeftPaddingMonthrange: string;
         calendarRightPaddingDate: string;
         calendarRightPaddingDatetime: string;
         calendarRightPaddingDaterange: string;
@@ -5047,6 +5132,7 @@ declare const _default: import("vue").DefineComponent<{
         calendarRightPaddingMonth: string;
         calendarRightPaddingYear: string;
         calendarRightPaddingQuarter: string;
+        calendarRightPaddingMonthrange: string;
     }, {
         Input: import("../../_mixins").Theme<"Input", {
             countTextColor: string;
@@ -5652,6 +5738,7 @@ declare const _default: import("vue").DefineComponent<{
         calendarLeftPaddingMonth: string;
         calendarLeftPaddingYear: string;
         calendarLeftPaddingQuarter: string;
+        calendarLeftPaddingMonthrange: string;
         calendarRightPaddingDate: string;
         calendarRightPaddingDatetime: string;
         calendarRightPaddingDaterange: string;
@@ -5659,6 +5746,7 @@ declare const _default: import("vue").DefineComponent<{
         calendarRightPaddingMonth: string;
         calendarRightPaddingYear: string;
         calendarRightPaddingQuarter: string;
+        calendarRightPaddingMonthrange: string;
     }, {
         Input: import("../../_mixins").Theme<"Input", {
             countTextColor: string;
@@ -6264,6 +6352,7 @@ declare const _default: import("vue").DefineComponent<{
         calendarLeftPaddingMonth: string;
         calendarLeftPaddingYear: string;
         calendarLeftPaddingQuarter: string;
+        calendarLeftPaddingMonthrange: string;
         calendarRightPaddingDate: string;
         calendarRightPaddingDatetime: string;
         calendarRightPaddingDaterange: string;
@@ -6271,6 +6360,7 @@ declare const _default: import("vue").DefineComponent<{
         calendarRightPaddingMonth: string;
         calendarRightPaddingYear: string;
         calendarRightPaddingQuarter: string;
+        calendarRightPaddingMonthrange: string;
     }, {
         Input: import("../../_mixins").Theme<"Input", {
             countTextColor: string;

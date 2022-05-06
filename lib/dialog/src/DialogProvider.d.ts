@@ -44,6 +44,7 @@ export declare const NDialogProvider: import("vue").DefineComponent<{
         icon?: (() => import("vue").VNodeChild) | undefined;
         title?: string | (() => import("vue").VNodeChild) | undefined;
         action?: (() => import("vue").VNodeChild) | undefined;
+        autoFocus?: boolean | undefined;
         positiveText?: string | undefined;
         negativeText?: string | undefined;
         loading?: boolean | undefined;
@@ -722,6 +723,7 @@ export declare const NDialogProvider: import("vue").DefineComponent<{
         } | undefined;
         onPositiveClick?: ((e: MouseEvent) => unknown) | undefined;
         onNegativeClick?: ((e: MouseEvent) => unknown) | undefined;
+        blockScroll?: boolean | undefined;
         onMaskClick?: ((e: MouseEvent) => void) | undefined;
         maskClosable?: boolean | undefined;
         closeOnEsc?: boolean | undefined;

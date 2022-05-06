@@ -52,21 +52,26 @@ export default defineComponent({
                         h(FastForwardIcon, null))),
                 h("div", { class: `${mergedClsPrefix}-date-panel-weekdays` }, this.weekdays.map((weekday) => (h("div", { key: weekday, class: `${mergedClsPrefix}-date-panel-weekdays__day` }, weekday)))),
                 h("div", { class: `${mergedClsPrefix}-date-panel__divider` }),
-                h("div", { class: `${mergedClsPrefix}-date-panel-dates` }, this.startDateArray.map((dateItem, i) => (h("div", { "data-n-date": true, key: i, class: [
-                        `${mergedClsPrefix}-date-panel-date`,
-                        {
-                            [`${mergedClsPrefix}-date-panel-date--excluded`]: !dateItem.inCurrentMonth,
-                            [`${mergedClsPrefix}-date-panel-date--current`]: dateItem.isCurrentDate,
-                            [`${mergedClsPrefix}-date-panel-date--selected`]: dateItem.selected,
-                            [`${mergedClsPrefix}-date-panel-date--covered`]: dateItem.inSpan,
-                            [`${mergedClsPrefix}-date-panel-date--start`]: dateItem.startOfSpan,
-                            [`${mergedClsPrefix}-date-panel-date--end`]: dateItem.endOfSpan,
-                            [`${mergedClsPrefix}-date-panel-date--disabled`]: this.mergedIsDateDisabled(dateItem.ts)
-                        }
-                    ], onClick: () => this.handleDateClick(dateItem), onMouseenter: () => this.handleDateMouseEnter(dateItem) },
-                    h("div", { class: `${mergedClsPrefix}-date-panel-date__trigger` }),
-                    dateItem.dateObject.date,
-                    dateItem.isCurrentDate ? (h("div", { class: `${mergedClsPrefix}-date-panel-date__sup` })) : null))))),
+                h("div", { class: `${mergedClsPrefix}-date-panel-dates` }, this.startDateArray.map((dateItem, i) => {
+                    const disabled = this.mergedIsDateDisabled(dateItem.ts);
+                    return (h("div", { "data-n-date": true, key: i, class: [
+                            `${mergedClsPrefix}-date-panel-date`,
+                            {
+                                [`${mergedClsPrefix}-date-panel-date--excluded`]: !dateItem.inCurrentMonth,
+                                [`${mergedClsPrefix}-date-panel-date--current`]: dateItem.isCurrentDate,
+                                [`${mergedClsPrefix}-date-panel-date--selected`]: dateItem.selected,
+                                [`${mergedClsPrefix}-date-panel-date--covered`]: dateItem.inSpan,
+                                [`${mergedClsPrefix}-date-panel-date--start`]: dateItem.startOfSpan,
+                                [`${mergedClsPrefix}-date-panel-date--end`]: dateItem.endOfSpan,
+                                [`${mergedClsPrefix}-date-panel-date--disabled`]: disabled
+                            }
+                        ], onClick: disabled ? undefined : () => this.handleDateClick(dateItem), onMouseenter: disabled
+                            ? undefined
+                            : () => this.handleDateMouseEnter(dateItem) },
+                        h("div", { class: `${mergedClsPrefix}-date-panel-date__trigger` }),
+                        dateItem.dateObject.date,
+                        dateItem.isCurrentDate ? (h("div", { class: `${mergedClsPrefix}-date-panel-date__sup` })) : null));
+                }))),
             h("div", { class: `${mergedClsPrefix}-date-panel__vertical-divider` }),
             h("div", { ref: "endDatesElRef", class: `${mergedClsPrefix}-date-panel-calendar ${mergedClsPrefix}-date-panel-calendar--end` },
                 h("div", { class: `${mergedClsPrefix}-date-panel-month` },
@@ -81,21 +86,26 @@ export default defineComponent({
                         h(FastForwardIcon, null))),
                 h("div", { class: `${mergedClsPrefix}-date-panel-weekdays` }, this.weekdays.map((weekday) => (h("div", { key: weekday, class: `${mergedClsPrefix}-date-panel-weekdays__day` }, weekday)))),
                 h("div", { class: `${mergedClsPrefix}-date-panel__divider` }),
-                h("div", { class: `${mergedClsPrefix}-date-panel-dates` }, this.endDateArray.map((dateItem, i) => (h("div", { "data-n-date": true, key: i, class: [
-                        `${mergedClsPrefix}-date-panel-date`,
-                        {
-                            [`${mergedClsPrefix}-date-panel-date--excluded`]: !dateItem.inCurrentMonth,
-                            [`${mergedClsPrefix}-date-panel-date--current`]: dateItem.isCurrentDate,
-                            [`${mergedClsPrefix}-date-panel-date--selected`]: dateItem.selected,
-                            [`${mergedClsPrefix}-date-panel-date--covered`]: dateItem.inSpan,
-                            [`${mergedClsPrefix}-date-panel-date--start`]: dateItem.startOfSpan,
-                            [`${mergedClsPrefix}-date-panel-date--end`]: dateItem.endOfSpan,
-                            [`${mergedClsPrefix}-date-panel-date--disabled`]: this.mergedIsDateDisabled(dateItem.ts)
-                        }
-                    ], onClick: () => this.handleDateClick(dateItem), onMouseenter: () => this.handleDateMouseEnter(dateItem) },
-                    h("div", { class: `${mergedClsPrefix}-date-panel-date__trigger` }),
-                    dateItem.dateObject.date,
-                    dateItem.isCurrentDate ? (h("div", { class: `${mergedClsPrefix}-date-panel-date__sup` })) : null))))),
+                h("div", { class: `${mergedClsPrefix}-date-panel-dates` }, this.endDateArray.map((dateItem, i) => {
+                    const disabled = this.mergedIsDateDisabled(dateItem.ts);
+                    return (h("div", { "data-n-date": true, key: i, class: [
+                            `${mergedClsPrefix}-date-panel-date`,
+                            {
+                                [`${mergedClsPrefix}-date-panel-date--excluded`]: !dateItem.inCurrentMonth,
+                                [`${mergedClsPrefix}-date-panel-date--current`]: dateItem.isCurrentDate,
+                                [`${mergedClsPrefix}-date-panel-date--selected`]: dateItem.selected,
+                                [`${mergedClsPrefix}-date-panel-date--covered`]: dateItem.inSpan,
+                                [`${mergedClsPrefix}-date-panel-date--start`]: dateItem.startOfSpan,
+                                [`${mergedClsPrefix}-date-panel-date--end`]: dateItem.endOfSpan,
+                                [`${mergedClsPrefix}-date-panel-date--disabled`]: disabled
+                            }
+                        ], onClick: disabled ? undefined : () => this.handleDateClick(dateItem), onMouseenter: disabled
+                            ? undefined
+                            : () => this.handleDateMouseEnter(dateItem) },
+                        h("div", { class: `${mergedClsPrefix}-date-panel-date__trigger` }),
+                        dateItem.dateObject.date,
+                        dateItem.isCurrentDate ? (h("div", { class: `${mergedClsPrefix}-date-panel-date__sup` })) : null));
+                }))),
             this.datePickerSlots.footer ? (h("div", { class: `${mergedClsPrefix}-date-panel-footer` }, this.datePickerSlots.footer())) : null,
             ((_a = this.actions) === null || _a === void 0 ? void 0 : _a.length) || shortcuts ? (h("div", { class: `${mergedClsPrefix}-date-panel-actions` },
                 h("div", { class: `${mergedClsPrefix}-date-panel-actions__prefix` }, shortcuts &&

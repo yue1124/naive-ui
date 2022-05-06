@@ -1,14 +1,15 @@
 import { inject, computed, watch, ref } from 'vue';
 import { addMonths, format, getYear, getMonth, startOfMonth, isValid, startOfSecond, startOfDay, set, getDate, getTime } from 'date-fns';
-import { getDefaultTime, dateArray, strictParse } from '../utils';
-import { datePickerInjectionKey } from '../interface';
+import { dateArray, strictParse, yearArray, monthArray, getDefaultTime, pluckValueFromRange } from '../utils';
 import { usePanelCommon, usePanelCommonProps } from './use-panel-common';
+import { datePickerInjectionKey } from '../interface';
+import { MONTH_ITEM_HEIGHT, START_YEAR } from '../config';
 const useDualCalendarProps = Object.assign(Object.assign({}, usePanelCommonProps), { actions: {
         type: Array,
         default: () => ['clear', 'confirm']
     } });
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-function useDualCalendar(props, type = 'datetime') {
+function useDualCalendar(props, type) {
     const { isDateDisabledRef, isStartHourDisabledRef, isEndHourDisabledRef, isStartMinuteDisabledRef, isEndMinuteDisabledRef, isStartSecondDisabledRef, isEndSecondDisabledRef, isStartDateInvalidRef, isEndDateInvalidRef, isStartTimeInvalidRef, isEndTimeInvalidRef, isStartValueInvalidRef, isEndValueInvalidRef, isRangeInvalidRef, localeRef, rangesRef, closeOnSelectRef, updateValueOnCloseRef, firstDayOfWeekRef, datePickerSlots
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
      } = inject(datePickerInjectionKey);
@@ -31,6 +32,12 @@ function useDualCalendar(props, type = 'datetime') {
     const panelCommon = usePanelCommon(props);
     const startDatesElRef = ref(null);
     const endDatesElRef = ref(null);
+    const startYearScrollbarRef = ref(null);
+    const endYearScrollbarRef = ref(null);
+    const startYearVlRef = ref(null);
+    const endYearVlRef = ref(null);
+    const startMonthScrollbarRef = ref(null);
+    const endMonthScrollbarRef = ref(null);
     const startCalendarDateTimeRef = ref(Date.now());
     const endCalendarDateTimeRef = ref(getTime(addMonths(Date.now(), 1)));
     const nowRef = ref(Date.now());
@@ -95,6 +102,20 @@ function useDualCalendar(props, type = 'datetime') {
     const shortcutsRef = computed(() => {
         const { shortcuts } = props;
         return shortcuts || rangesRef.value;
+    });
+    const startYearArrayRef = computed(() => {
+        return yearArray(pluckValueFromRange(props.value, 'start'), nowRef.value);
+    });
+    const endYearArrayRef = computed(() => {
+        return yearArray(pluckValueFromRange(props.value, 'end'), nowRef.value);
+    });
+    const startMonthArrayRef = computed(() => {
+        const startValue = pluckValueFromRange(props.value, 'start');
+        return monthArray(startValue !== null && startValue !== void 0 ? startValue : Date.now(), startValue, nowRef.value);
+    });
+    const endMonthArrayRef = computed(() => {
+        const endValue = pluckValueFromRange(props.value, 'end');
+        return monthArray(endValue !== null && endValue !== void 0 ? endValue : Date.now(), endValue, nowRef.value);
     });
     watch(computed(() => props.value), (value) => {
         if (value !== null && Array.isArray(value)) {
@@ -221,10 +242,8 @@ function useDualCalendar(props, type = 'datetime') {
             endCalendarDateTimeRef.value = getTime(startOfMonth(endMoment));
         }
     }
+    // for daterange & datetimerange
     function handleDateClick(dateItem) {
-        if (mergedIsDateDisabled(dateItem.ts)) {
-            return;
-        }
         if (!isSelectingRef.value) {
             isSelectingRef.value = true;
             memorizedStartDateTimeRef.value = dateItem.ts;
@@ -319,6 +338,9 @@ function useDualCalendar(props, type = 'datetime') {
     function sanitizeValue(datetime) {
         if (type === 'datetimerange') {
             return getTime(startOfSecond(datetime));
+        }
+        else if (type === 'monthrange') {
+            return getTime(startOfMonth(datetime));
         }
         else {
             // daterange
@@ -464,10 +486,130 @@ function useDualCalendar(props, type = 'datetime') {
         panelCommon.clearPendingValue();
         handleConfirmClick();
     }
-    return Object.assign(Object.assign(Object.assign({ startDatesElRef,
+    function justifyColumnsScrollState(value, type) {
+        const mergedValue = value === undefined ? props.value : value;
+        if (value === undefined || type === 'start') {
+            if (startMonthScrollbarRef.value) {
+                const monthIndex = !Array.isArray(mergedValue)
+                    ? getMonth(Date.now())
+                    : getMonth(mergedValue[0]);
+                startMonthScrollbarRef.value.scrollTo({
+                    debounce: false,
+                    index: monthIndex,
+                    elSize: MONTH_ITEM_HEIGHT
+                });
+            }
+            if (startYearVlRef.value) {
+                const yearIndex = (!Array.isArray(mergedValue)
+                    ? getYear(Date.now())
+                    : getYear(mergedValue[0])) - START_YEAR;
+                startYearVlRef.value.scrollTo({ index: yearIndex, debounce: false });
+            }
+        }
+        if (value === undefined || type === 'end') {
+            if (endMonthScrollbarRef.value) {
+                const monthIndex = !Array.isArray(mergedValue)
+                    ? getMonth(Date.now())
+                    : getMonth(mergedValue[1]);
+                endMonthScrollbarRef.value.scrollTo({
+                    debounce: false,
+                    index: monthIndex,
+                    elSize: MONTH_ITEM_HEIGHT
+                });
+            }
+            if (endYearVlRef.value) {
+                const yearIndex = (!Array.isArray(mergedValue)
+                    ? getYear(Date.now())
+                    : getYear(mergedValue[1])) - START_YEAR;
+                endYearVlRef.value.scrollTo({ index: yearIndex, debounce: false });
+            }
+        }
+    }
+    // only for monthrange
+    function handleColItemClick(dateItem, clickType) {
+        const { value } = props;
+        const noCurrentValue = !Array.isArray(value);
+        const itemTs = dateItem.type === 'year'
+            ? noCurrentValue
+                ? set(dateItem.ts, { month: getMonth(new Date()) }).valueOf()
+                : set(dateItem.ts, {
+                    month: getMonth(value[clickType === 'start' ? 0 : 1])
+                }).valueOf()
+            : dateItem.ts;
+        if (noCurrentValue) {
+            const newValue = sanitizeValue(itemTs);
+            panelCommon.doUpdateValue([newValue, newValue], false);
+            return;
+        }
+        const nextValue = [value[0], value[1]];
+        let otherPartsChanged = false;
+        if (clickType === 'start') {
+            nextValue[0] = sanitizeValue(itemTs);
+            if (nextValue[0] > nextValue[1]) {
+                nextValue[1] = nextValue[0];
+                otherPartsChanged = true;
+            }
+        }
+        else {
+            nextValue[1] = sanitizeValue(itemTs);
+            if (nextValue[0] > nextValue[1]) {
+                nextValue[0] = nextValue[1];
+                otherPartsChanged = true;
+            }
+        }
+        panelCommon.doUpdateValue(nextValue, false);
+        switch (type) {
+            case 'monthrange':
+                panelCommon.disableTransitionOneTick();
+                if (otherPartsChanged) {
+                    justifyColumnsScrollState(nextValue, 'start');
+                    justifyColumnsScrollState(nextValue, 'end');
+                }
+                else {
+                    justifyColumnsScrollState(nextValue, clickType);
+                }
+                break;
+        }
+    }
+    function handleStartYearVlScroll() {
+        var _a;
+        (_a = startYearScrollbarRef.value) === null || _a === void 0 ? void 0 : _a.sync();
+    }
+    function handleEndYearVlScroll() {
+        var _a;
+        (_a = endYearScrollbarRef.value) === null || _a === void 0 ? void 0 : _a.sync();
+    }
+    function virtualListContainer(type) {
+        var _a, _b;
+        if (type === 'start') {
+            return (_a = startYearVlRef.value) === null || _a === void 0 ? void 0 : _a.listElRef;
+        }
+        else {
+            return (_b = endYearVlRef.value) === null || _b === void 0 ? void 0 : _b.listElRef;
+        }
+    }
+    function virtualListContent(type) {
+        var _a, _b;
+        if (type === 'start') {
+            return (_a = startYearVlRef.value) === null || _a === void 0 ? void 0 : _a.itemsElRef;
+        }
+        else {
+            return (_b = endYearVlRef.value) === null || _b === void 0 ? void 0 : _b.itemsElRef;
+        }
+    }
+    const childComponentRefs = {
+        startYearVlRef,
+        endYearVlRef,
+        startMonthScrollbarRef,
+        endMonthScrollbarRef,
+        startYearScrollbarRef,
+        endYearScrollbarRef
+    };
+    return Object.assign(Object.assign(Object.assign(Object.assign({ startDatesElRef,
         endDatesElRef,
         resetSelectingStatus,
         handleDateClick,
+        handleColItemClick,
         handleDateMouseEnter,
         handleConfirmClick,
         startCalendarPrevYear,
@@ -479,16 +621,20 @@ function useDualCalendar(props, type = 'datetime') {
         endCalendarNextMonth,
         endCalendarNextYear,
         mergedIsDateDisabled,
-        changeStartEndTime, ranges: rangesRef, startCalendarMonth: startCalendarMonthRef, startCalendarYear: startCalendarYearRef, endCalendarMonth: endCalendarMonthRef, endCalendarYear: endCalendarYearRef, weekdays: weekdaysRef, startDateArray: startDateArrayRef, endDateArray: endDateArrayRef, handleRangeShortcutMouseenter,
-        handleRangeShortcutClick }, panelCommon), validation), { 
+        changeStartEndTime, ranges: rangesRef, startCalendarMonth: startCalendarMonthRef, startCalendarYear: startCalendarYearRef, endCalendarMonth: endCalendarMonthRef, endCalendarYear: endCalendarYearRef, weekdays: weekdaysRef, startDateArray: startDateArrayRef, endDateArray: endDateArrayRef, startYearArray: startYearArrayRef, startMonthArray: startMonthArrayRef, endYearArray: endYearArrayRef, endMonthArray: endMonthArrayRef, handleRangeShortcutMouseenter,
+        handleRangeShortcutClick }, panelCommon), validation), childComponentRefs), { 
         // datetimerangeonly
-        startDateDisplayString: startDateInput, endDateInput: endDateInputRef, timePickerSize: panelCommon.timePickerSize, startTimeValue: startTimeValueRef, endTimeValue: endTimeValueRef, handleFocusDetectorFocus: panelCommon.handleFocusDetectorFocus, handleStartTimePickerChange,
+        startDateDisplayString: startDateInput, endDateInput: endDateInputRef, timePickerSize: panelCommon.timePickerSize, startTimeValue: startTimeValueRef, endTimeValue: endTimeValueRef, datePickerSlots, shortcuts: shortcutsRef, startCalendarDateTime: startCalendarDateTimeRef, endCalendarDateTime: endCalendarDateTimeRef, justifyColumnsScrollState, handleFocusDetectorFocus: panelCommon.handleFocusDetectorFocus, handleStartTimePickerChange,
         handleEndTimePickerChange,
         handleStartDateInput,
         handleStartDateInputBlur,
         handleEndDateInput,
         handleEndDateInputBlur,
-        datePickerSlots, shortcuts: shortcutsRef, startCalendarDateTime: startCalendarDateTimeRef, endCalendarDateTime: endCalendarDateTimeRef, onUpdateStartCalendarValue,
+        handleStartYearVlScroll,
+        handleEndYearVlScroll,
+        virtualListContainer,
+        virtualListContent,
+        onUpdateStartCalendarValue,
         onUpdateEndCalendarValue });
 }
 export { useDualCalendar, useDualCalendarProps };

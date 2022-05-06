@@ -1,4 +1,6 @@
 import { ExtractPropTypes, PropType } from 'vue';
+import { VirtualListInst } from 'vueuc';
+import type { ScrollbarInst } from '../../../_internal';
 import type { Shortcuts } from '../interface';
 import type { DateItem, MonthItem, YearItem, QuarterItem } from '../utils';
 declare const useCalendarProps: {
@@ -42,39 +44,13 @@ declare function useCalendar(props: ExtractPropTypes<typeof useCalendarProps>, t
     datePickerSlots: Readonly<{
         [name: string]: import("vue").Slot | undefined;
     }>;
-    monthScrollRef: import("vue").Ref<{
-        $el: HTMLElement;
-        containerRef: HTMLElement | null;
-        contentRef: HTMLElement | null;
-        containerScrollTop: number;
-        syncUnifiedContainer: () => void;
-        scrollTo: import("../../../_internal/scrollbar/src/ScrollBar").ScrollTo;
-        scrollBy: import("../../../_internal/scrollbar/src/ScrollBar").ScrollBy;
-        sync: () => void;
-        handleMouseEnterWrapper: () => void;
-        handleMouseLeaveWrapper: () => void;
-    } | null>;
-    yearScrollRef: import("vue").Ref<{
-        listElRef: HTMLElement;
-        itemsElRef: HTMLElement | null;
-        scrollTo: import("vueuc/lib/virtual-list/src/VirtualList").ScrollTo;
-    } | null>;
-    scrollbarInstRef: import("vue").Ref<{
-        $el: HTMLElement;
-        containerRef: HTMLElement | null;
-        contentRef: HTMLElement | null;
-        containerScrollTop: number;
-        syncUnifiedContainer: () => void;
-        scrollTo: import("../../../_internal/scrollbar/src/ScrollBar").ScrollTo;
-        scrollBy: import("../../../_internal/scrollbar/src/ScrollBar").ScrollBy;
-        sync: () => void;
-        handleMouseEnterWrapper: () => void;
-        handleMouseLeaveWrapper: () => void;
-    } | null>;
     handleQuickMonthClick: (dateItem: MonthItem | YearItem | QuarterItem, updatePanelValue: (value: number) => void) => void;
-    scrollPickerColumns: (value?: number | undefined) => void;
+    justifyColumnsScrollState: (value?: number | undefined) => void;
     calendarValue: import("vue").Ref<number>;
     onUpdateCalendarValue: (value: number) => void;
+    monthScrollbarRef: import("vue").Ref<ScrollbarInst | null>;
+    yearScrollbarRef: import("vue").Ref<ScrollbarInst | null>;
+    yearVlRef: import("vue").Ref<VirtualListInst | null>;
     mergedTheme: import("vue").Ref<{
         common: {
             baseColor: string;
@@ -227,6 +203,7 @@ declare function useCalendar(props: ExtractPropTypes<typeof useCalendarProps>, t
             calendarLeftPaddingMonth: string;
             calendarLeftPaddingYear: string;
             calendarLeftPaddingQuarter: string;
+            calendarLeftPaddingMonthrange: string;
             calendarRightPaddingDate: string;
             calendarRightPaddingDatetime: string;
             calendarRightPaddingDaterange: string;
@@ -234,6 +211,7 @@ declare function useCalendar(props: ExtractPropTypes<typeof useCalendarProps>, t
             calendarRightPaddingMonth: string;
             calendarRightPaddingYear: string;
             calendarRightPaddingQuarter: string;
+            calendarRightPaddingMonthrange: string;
         };
         peers: {
             Input: import("../../../_mixins").Theme<"Input", {
@@ -1110,6 +1088,8 @@ declare function useCalendar(props: ExtractPropTypes<typeof useCalendarProps>, t
         endDatePlaceholder: string;
         startDatetimePlaceholder: string;
         endDatetimePlaceholder: string;
+        startMonthPlaceholder: string;
+        endMonthPlaceholder: string;
         monthBeforeYear: boolean;
         firstDayOfWeek: 0 | 2 | 1 | 3 | 4 | 5 | 6;
         today: string;

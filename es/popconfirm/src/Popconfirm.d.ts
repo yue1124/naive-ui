@@ -66,24 +66,27 @@ declare const popconfirmProps: {
         type: BooleanConstructor;
         default: boolean;
     };
-    onClickoutside: PropType<(e: MouseEvent) => void>;
-    internalExtraClass: {
-        type: PropType<string[]>;
-        default: () => never[];
-    };
-    'onUpdate:show': PropType<import("../../_utils").MaybeArray<(value: boolean) => void>>;
-    onUpdateShow: PropType<import("../../_utils").MaybeArray<(value: boolean) => void>>;
     zIndex: NumberConstructor;
     to: {
         type: PropType<string | boolean | HTMLElement>;
         default: undefined;
     };
+    scrollable: BooleanConstructor;
+    contentStyle: PropType<string | import("vue").CSSProperties>;
+    headerStyle: PropType<string | import("vue").CSSProperties>;
+    onClickoutside: PropType<(e: MouseEvent) => void>;
+    'onUpdate:show': PropType<import("../../_utils").MaybeArray<(value: boolean) => void>>;
+    onUpdateShow: PropType<import("../../_utils").MaybeArray<(value: boolean) => void>>;
     internalSyncTargetWithParent: BooleanConstructor;
     internalInheritedEventHandlers: {
         type: PropType<import("../../popover/src/Popover").TriggerEventHandlers[]>;
         default: () => never[];
     };
     internalTrapFocus: BooleanConstructor;
+    internalExtraClass: {
+        type: PropType<string[]>;
+        default: () => never[];
+    };
     onShow: PropType<import("../../_utils").MaybeArray<(value: boolean) => void> | undefined>;
     onHide: PropType<import("../../_utils").MaybeArray<(value: boolean) => void> | undefined>;
     arrow: {
@@ -831,24 +834,27 @@ declare const _default: import("vue").DefineComponent<{
         type: BooleanConstructor;
         default: boolean;
     };
-    onClickoutside: PropType<(e: MouseEvent) => void>;
-    internalExtraClass: {
-        type: PropType<string[]>;
-        default: () => never[];
-    };
-    'onUpdate:show': PropType<import("../../_utils").MaybeArray<(value: boolean) => void>>;
-    onUpdateShow: PropType<import("../../_utils").MaybeArray<(value: boolean) => void>>;
     zIndex: NumberConstructor;
     to: {
         type: PropType<string | boolean | HTMLElement>;
         default: undefined;
     };
+    scrollable: BooleanConstructor;
+    contentStyle: PropType<string | import("vue").CSSProperties>;
+    headerStyle: PropType<string | import("vue").CSSProperties>;
+    onClickoutside: PropType<(e: MouseEvent) => void>;
+    'onUpdate:show': PropType<import("../../_utils").MaybeArray<(value: boolean) => void>>;
+    onUpdateShow: PropType<import("../../_utils").MaybeArray<(value: boolean) => void>>;
     internalSyncTargetWithParent: BooleanConstructor;
     internalInheritedEventHandlers: {
         type: PropType<import("../../popover/src/Popover").TriggerEventHandlers[]>;
         default: () => never[];
     };
     internalTrapFocus: BooleanConstructor;
+    internalExtraClass: {
+        type: PropType<string[]>;
+        default: () => never[];
+    };
     onShow: PropType<import("../../_utils").MaybeArray<(value: boolean) => void> | undefined>;
     onHide: PropType<import("../../_utils").MaybeArray<(value: boolean) => void> | undefined>;
     arrow: {
@@ -1943,24 +1949,27 @@ declare const _default: import("vue").DefineComponent<{
         type: BooleanConstructor;
         default: boolean;
     };
-    onClickoutside: PropType<(e: MouseEvent) => void>;
-    internalExtraClass: {
-        type: PropType<string[]>;
-        default: () => never[];
-    };
-    'onUpdate:show': PropType<import("../../_utils").MaybeArray<(value: boolean) => void>>;
-    onUpdateShow: PropType<import("../../_utils").MaybeArray<(value: boolean) => void>>;
     zIndex: NumberConstructor;
     to: {
         type: PropType<string | boolean | HTMLElement>;
         default: undefined;
     };
+    scrollable: BooleanConstructor;
+    contentStyle: PropType<string | import("vue").CSSProperties>;
+    headerStyle: PropType<string | import("vue").CSSProperties>;
+    onClickoutside: PropType<(e: MouseEvent) => void>;
+    'onUpdate:show': PropType<import("../../_utils").MaybeArray<(value: boolean) => void>>;
+    onUpdateShow: PropType<import("../../_utils").MaybeArray<(value: boolean) => void>>;
     internalSyncTargetWithParent: BooleanConstructor;
     internalInheritedEventHandlers: {
         type: PropType<import("../../popover/src/Popover").TriggerEventHandlers[]>;
         default: () => never[];
     };
     internalTrapFocus: BooleanConstructor;
+    internalExtraClass: {
+        type: PropType<string[]>;
+        default: () => never[];
+    };
     onShow: PropType<import("../../_utils").MaybeArray<(value: boolean) => void> | undefined>;
     onHide: PropType<import("../../_utils").MaybeArray<(value: boolean) => void> | undefined>;
     arrow: {
@@ -2652,18 +2661,19 @@ declare const _default: import("vue").DefineComponent<{
     showIcon: boolean;
     placement: import("vueuc/lib/binder/src/interface").Placement;
     overlap: boolean;
+    scrollable: boolean;
     trigger: PopoverTrigger;
     showArrow: boolean;
     delay: number;
     arrowPointToCenter: boolean;
     displayDirective: "show" | "if";
     keepAliveOnHover: boolean;
-    internalTrapFocus: boolean;
     animated: boolean;
+    internalTrapFocus: boolean;
     defaultShow: boolean;
-    internalExtraClass: string[];
     internalSyncTargetWithParent: boolean;
     internalInheritedEventHandlers: import("../../popover/src/Popover").TriggerEventHandlers[];
+    internalExtraClass: string[];
     arrow: boolean | undefined;
 }>;
 export default _default;

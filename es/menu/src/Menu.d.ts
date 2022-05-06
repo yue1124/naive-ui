@@ -3,7 +3,7 @@ import { Key } from 'treemate';
 import { FollowerPlacement } from 'vueuc';
 import { DropdownProps } from '../../dropdown';
 import type { MaybeArray } from '../../_utils';
-import { MenuOption, MenuGroupOption, MenuIgnoredOption, MenuMixedOption, OnUpdateValue, OnUpdateKeys } from './interface';
+import { MenuOption, MenuGroupOption, MenuIgnoredOption, MenuMixedOption, OnUpdateValue, OnUpdateKeys, MenuNodeProps } from './interface';
 declare const menuProps: {
     readonly options: {
         readonly type: PropType<MenuMixedOption[]>;
@@ -68,19 +68,19 @@ declare const menuProps: {
     readonly renderIcon: PropType<(option: MenuOption) => VNodeChild>;
     readonly renderLabel: PropType<(option: MenuOption | MenuGroupOption) => VNodeChild>;
     readonly renderExtra: PropType<(option: MenuOption | MenuGroupOption) => VNodeChild>;
-    /** TODO: deprecate it */
-    readonly dropdownPlacement: {
-        readonly type: PropType<FollowerPlacement>;
-        readonly default: "bottom";
-    };
     readonly dropdownProps: PropType<DropdownProps>;
     readonly accordion: BooleanConstructor;
+    readonly nodeProps: PropType<MenuNodeProps>;
     readonly items: PropType<(MenuOption | MenuGroupOption)[]>;
     readonly onOpenNamesChange: PropType<MaybeArray<OnUpdateKeys>>;
     readonly onSelect: PropType<MaybeArray<OnUpdateValue>>;
     readonly onExpandedNamesChange: PropType<MaybeArray<OnUpdateKeys>>;
     readonly expandedNames: PropType<Key[]>;
     readonly defaultExpandedNames: PropType<Key[]>;
+    readonly dropdownPlacement: {
+        readonly type: PropType<FollowerPlacement>;
+        readonly default: "bottom";
+    };
     readonly theme: PropType<import("../../_mixins").Theme<"Menu", {
         itemColorHoverInverted: string;
         itemColorActiveInverted: string;
@@ -640,19 +640,19 @@ declare const _default: import("vue").DefineComponent<{
     readonly renderIcon: PropType<(option: MenuOption) => VNodeChild>;
     readonly renderLabel: PropType<(option: MenuOption | MenuGroupOption) => VNodeChild>;
     readonly renderExtra: PropType<(option: MenuOption | MenuGroupOption) => VNodeChild>;
-    /** TODO: deprecate it */
-    readonly dropdownPlacement: {
-        readonly type: PropType<FollowerPlacement>;
-        readonly default: "bottom";
-    };
     readonly dropdownProps: PropType<DropdownProps>;
     readonly accordion: BooleanConstructor;
+    readonly nodeProps: PropType<MenuNodeProps>;
     readonly items: PropType<(MenuOption | MenuGroupOption)[]>;
     readonly onOpenNamesChange: PropType<MaybeArray<OnUpdateKeys>>;
     readonly onSelect: PropType<MaybeArray<OnUpdateValue>>;
     readonly onExpandedNamesChange: PropType<MaybeArray<OnUpdateKeys>>;
     readonly expandedNames: PropType<Key[]>;
     readonly defaultExpandedNames: PropType<Key[]>;
+    readonly dropdownPlacement: {
+        readonly type: PropType<FollowerPlacement>;
+        readonly default: "bottom";
+    };
     readonly theme: PropType<import("../../_mixins").Theme<"Menu", {
         itemColorHoverInverted: string;
         itemColorActiveInverted: string;
@@ -1530,19 +1530,19 @@ declare const _default: import("vue").DefineComponent<{
     readonly renderIcon: PropType<(option: MenuOption) => VNodeChild>;
     readonly renderLabel: PropType<(option: MenuOption | MenuGroupOption) => VNodeChild>;
     readonly renderExtra: PropType<(option: MenuOption | MenuGroupOption) => VNodeChild>;
-    /** TODO: deprecate it */
-    readonly dropdownPlacement: {
-        readonly type: PropType<FollowerPlacement>;
-        readonly default: "bottom";
-    };
     readonly dropdownProps: PropType<DropdownProps>;
     readonly accordion: BooleanConstructor;
+    readonly nodeProps: PropType<MenuNodeProps>;
     readonly items: PropType<(MenuOption | MenuGroupOption)[]>;
     readonly onOpenNamesChange: PropType<MaybeArray<OnUpdateKeys>>;
     readonly onSelect: PropType<MaybeArray<OnUpdateValue>>;
     readonly onExpandedNamesChange: PropType<MaybeArray<OnUpdateKeys>>;
     readonly expandedNames: PropType<Key[]>;
     readonly defaultExpandedNames: PropType<Key[]>;
+    readonly dropdownPlacement: {
+        readonly type: PropType<FollowerPlacement>;
+        readonly default: "bottom";
+    };
     readonly theme: PropType<import("../../_mixins").Theme<"Menu", {
         itemColorHoverInverted: string;
         itemColorActiveInverted: string;

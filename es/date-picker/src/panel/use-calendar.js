@@ -31,22 +31,25 @@ function useCalendar(props, type) {
     const calendarValueRef = ref(props.value === null || Array.isArray(props.value)
         ? Date.now()
         : props.value);
-    const yearScrollRef = ref(null);
-    const monthScrollRef = ref(null);
-    const scrollbarInstRef = ref(null);
+    const yearVlRef = ref(null);
+    const yearScrollbarRef = ref(null);
+    const monthScrollbarRef = ref(null);
     const nowRef = ref(Date.now());
     const dateArrayRef = computed(() => {
         var _a;
         return dateArray(calendarValueRef.value, props.value, nowRef.value, (_a = firstDayOfWeekRef.value) !== null && _a !== void 0 ? _a : localeRef.value.firstDayOfWeek);
     });
     const monthArrayRef = computed(() => {
-        return monthArray(calendarValueRef.value, props.value, nowRef.value);
+        const { value } = props;
+        return monthArray(calendarValueRef.value, Array.isArray(value) ? null : value, nowRef.value);
     });
     const yearArrayRef = computed(() => {
-        return yearArray(calendarValueRef.value, props.value, nowRef.value);
+        const { value } = props;
+        return yearArray(Array.isArray(value) ? null : value, nowRef.value);
     });
     const quarterArrayRef = computed(() => {
-        return quarterArray(calendarValueRef.value, props.value, nowRef.value);
+        const { value } = props;
+        return quarterArray(calendarValueRef.value, Array.isArray(value) ? null : value, nowRef.value);
     });
     const weekdaysRef = computed(() => {
         return dateArrayRef.value.slice(0, 7).map((dateItem) => {
@@ -169,10 +172,10 @@ function useCalendar(props, type) {
                 break;
             case 'month':
                 panelCommon.disableTransitionOneTick();
-                scrollPickerColumns(newValue);
+                justifyColumnsScrollState(newValue);
                 break;
             case 'quarter':
-                scrollPickerColumns(newValue);
+                justifyColumnsScrollState(newValue);
                 break;
         }
     }
@@ -188,7 +191,7 @@ function useCalendar(props, type) {
             ? setMonth(newValue, dateItem.dateObject.month)
             : setYear(newValue, dateItem.dateObject.year));
         updatePanelValue(newValue);
-        scrollPickerColumns(newValue);
+        justifyColumnsScrollState(newValue);
     }
     function onUpdateCalendarValue(value) {
         calendarValueRef.value = value;
@@ -231,18 +234,18 @@ function useCalendar(props, type) {
     }
     // For month type
     function virtualListContainer() {
-        const { value } = yearScrollRef;
+        const { value } = yearVlRef;
         return value === null || value === void 0 ? void 0 : value.listElRef;
     }
     // For month type
     function virtualListContent() {
-        const { value } = yearScrollRef;
+        const { value } = yearVlRef;
         return value === null || value === void 0 ? void 0 : value.itemsElRef;
     }
     // For month type
     function handleVirtualListScroll(e) {
         var _a;
-        (_a = scrollbarInstRef.value) === null || _a === void 0 ? void 0 : _a.sync();
+        (_a = yearScrollbarRef.value) === null || _a === void 0 ? void 0 : _a.sync();
     }
     function handleTimePickerChange(value) {
         if (value === null)
@@ -264,26 +267,31 @@ function useCalendar(props, type) {
         panelCommon.clearPendingValue();
         handleConfirmClick();
     }
-    function scrollPickerColumns(value) {
+    function justifyColumnsScrollState(value) {
         const { value: mergedValue } = props;
-        if (monthScrollRef.value) {
+        if (monthScrollbarRef.value) {
             const monthIndex = value === undefined
                 ? mergedValue === null
                     ? getMonth(Date.now())
                     : getMonth(mergedValue)
                 : getMonth(value);
-            monthScrollRef.value.scrollTo({ top: monthIndex * MONTH_ITEM_HEIGHT });
+            monthScrollbarRef.value.scrollTo({ top: monthIndex * MONTH_ITEM_HEIGHT });
         }
-        if (yearScrollRef.value) {
+        if (yearVlRef.value) {
             const yearIndex = (value === undefined
                 ? mergedValue === null
                     ? getYear(Date.now())
                     : getYear(mergedValue)
                 : getYear(value)) - START_YEAR;
-            yearScrollRef.value.scrollTo({ top: yearIndex * MONTH_ITEM_HEIGHT });
+            yearVlRef.value.scrollTo({ top: yearIndex * MONTH_ITEM_HEIGHT });
         }
     }
-    return Object.assign(Object.assign(Object.assign({ dateArray: dateArrayRef, monthArray: monthArrayRef, yearArray: yearArrayRef, quarterArray: quarterArrayRef, calendarYear: calendarYearRef, calendarMonth: calendarMonthRef, weekdays: weekdaysRef, mergedIsDateDisabled,
+    const childComponentRefs = {
+        monthScrollbarRef,
+        yearScrollbarRef,
+        yearVlRef
+    };
+    return Object.assign(Object.assign(Object.assign(Object.assign({ dateArray: dateArrayRef, monthArray: monthArrayRef, yearArray: yearArrayRef, quarterArray: quarterArrayRef, calendarYear: calendarYearRef, calendarMonth: calendarMonthRef, weekdays: weekdaysRef, mergedIsDateDisabled,
         nextYear,
         prevYear,
         nextMonth,
@@ -291,7 +299,7 @@ function useCalendar(props, type) {
         handleNowClick,
         handleConfirmClick,
         handleSingleShortcutMouseenter,
-        handleSingleShortcutClick }, validation), panelCommon), { 
+        handleSingleShortcutClick }, validation), panelCommon), childComponentRefs), { 
         // datetime only
         handleDateClick,
         handleDateInputBlur,
@@ -301,10 +309,7 @@ function useCalendar(props, type) {
         virtualListContainer,
         virtualListContent,
         handleVirtualListScroll, timePickerSize: panelCommon.timePickerSize, dateInputValue: dateInputValueRef, datePickerSlots,
-        monthScrollRef,
-        yearScrollRef,
-        scrollbarInstRef,
         handleQuickMonthClick,
-        scrollPickerColumns, calendarValue: calendarValueRef, onUpdateCalendarValue });
+        justifyColumnsScrollState, calendarValue: calendarValueRef, onUpdateCalendarValue });
 }
 export { useCalendar, useCalendarProps };

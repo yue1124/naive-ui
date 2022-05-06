@@ -49,7 +49,7 @@ export function createCustomWidthStyle(column) {
     const width = getStringColWidth(column);
     return {
         width,
-        minWidth: width
+        minWidth: formatLength(column.minWidth) || width
     };
 }
 export function createRowClassName(row, index, rowClassName) {

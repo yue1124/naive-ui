@@ -2,6 +2,7 @@ import { PropType, CSSProperties } from 'vue';
 import type { ScrollbarProps } from '../../_internal';
 export declare type Placement = 'left' | 'right' | 'top' | 'bottom';
 declare const _default: import("vue").DefineComponent<{
+    blockScroll: BooleanConstructor;
     show: {
         type: PropType<boolean | undefined>;
         default: undefined;
@@ -170,10 +171,11 @@ declare const _default: import("vue").DefineComponent<{
             } | undefined;
         };
     }>;
-    displayed: import("vue").Ref<boolean | undefined>;
+    displayed: import("vue").Ref<boolean>;
     transitionName: import("vue").ComputedRef<string>;
     handleAfterLeave: () => void;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, Record<string, any>, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+    blockScroll: BooleanConstructor;
     show: {
         type: PropType<boolean | undefined>;
         default: undefined;
@@ -207,5 +209,6 @@ declare const _default: import("vue").DefineComponent<{
     show: boolean | undefined;
     autoFocus: boolean;
     trapFocus: boolean;
+    blockScroll: boolean;
 }>;
 export default _default;

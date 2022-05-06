@@ -59,6 +59,7 @@ declare const popselectProps: {
     };
     raw: BooleanConstructor;
     overlap: BooleanConstructor;
+    contentStyle: PropType<string | import("vue").CSSProperties>;
     arrowStyle: PropType<string | import("vue").CSSProperties>;
     delay: {
         type: NumberConstructor;
@@ -73,23 +74,24 @@ declare const popselectProps: {
         type: BooleanConstructor;
         default: boolean;
     };
-    internalTrapFocus: BooleanConstructor;
+    headerStyle: PropType<string | import("vue").CSSProperties>;
     animated: {
         type: BooleanConstructor;
         default: boolean;
     };
     onClickoutside: PropType<(e: MouseEvent) => void>;
+    internalTrapFocus: BooleanConstructor;
     defaultShow: BooleanConstructor;
     getDisabled: PropType<() => boolean>;
-    internalExtraClass: {
-        type: PropType<string[]>;
-        default: () => never[];
-    };
     'onUpdate:show': PropType<import("../../_utils").MaybeArray<(value: boolean) => void>>;
     onUpdateShow: PropType<import("../../_utils").MaybeArray<(value: boolean) => void>>;
     internalSyncTargetWithParent: BooleanConstructor;
     internalInheritedEventHandlers: {
         type: PropType<import("../../popover/src/Popover").TriggerEventHandlers[]>;
+        default: () => never[];
+    };
+    internalExtraClass: {
+        type: PropType<string[]>;
         default: () => never[];
     };
     onShow: PropType<import("../../_utils").MaybeArray<(value: boolean) => void> | undefined>;
@@ -358,6 +360,7 @@ declare const _default: import("vue").DefineComponent<{
     };
     raw: BooleanConstructor;
     overlap: BooleanConstructor;
+    contentStyle: PropType<string | import("vue").CSSProperties>;
     arrowStyle: PropType<string | import("vue").CSSProperties>;
     delay: {
         type: NumberConstructor;
@@ -372,23 +375,24 @@ declare const _default: import("vue").DefineComponent<{
         type: BooleanConstructor;
         default: boolean;
     };
-    internalTrapFocus: BooleanConstructor;
+    headerStyle: PropType<string | import("vue").CSSProperties>;
     animated: {
         type: BooleanConstructor;
         default: boolean;
     };
     onClickoutside: PropType<(e: MouseEvent) => void>;
+    internalTrapFocus: BooleanConstructor;
     defaultShow: BooleanConstructor;
     getDisabled: PropType<() => boolean>;
-    internalExtraClass: {
-        type: PropType<string[]>;
-        default: () => never[];
-    };
     'onUpdate:show': PropType<import("../../_utils").MaybeArray<(value: boolean) => void>>;
     onUpdateShow: PropType<import("../../_utils").MaybeArray<(value: boolean) => void>>;
     internalSyncTargetWithParent: BooleanConstructor;
     internalInheritedEventHandlers: {
         type: PropType<import("../../popover/src/Popover").TriggerEventHandlers[]>;
+        default: () => never[];
+    };
+    internalExtraClass: {
+        type: PropType<string[]>;
         default: () => never[];
     };
     onShow: PropType<import("../../_utils").MaybeArray<(value: boolean) => void> | undefined>;
@@ -863,6 +867,7 @@ declare const _default: import("vue").DefineComponent<{
     };
     raw: BooleanConstructor;
     overlap: BooleanConstructor;
+    contentStyle: PropType<string | import("vue").CSSProperties>;
     arrowStyle: PropType<string | import("vue").CSSProperties>;
     delay: {
         type: NumberConstructor;
@@ -877,23 +882,24 @@ declare const _default: import("vue").DefineComponent<{
         type: BooleanConstructor;
         default: boolean;
     };
-    internalTrapFocus: BooleanConstructor;
+    headerStyle: PropType<string | import("vue").CSSProperties>;
     animated: {
         type: BooleanConstructor;
         default: boolean;
     };
     onClickoutside: PropType<(e: MouseEvent) => void>;
+    internalTrapFocus: BooleanConstructor;
     defaultShow: BooleanConstructor;
     getDisabled: PropType<() => boolean>;
-    internalExtraClass: {
-        type: PropType<string[]>;
-        default: () => never[];
-    };
     'onUpdate:show': PropType<import("../../_utils").MaybeArray<(value: boolean) => void>>;
     onUpdateShow: PropType<import("../../_utils").MaybeArray<(value: boolean) => void>>;
     internalSyncTargetWithParent: BooleanConstructor;
     internalInheritedEventHandlers: {
         type: PropType<import("../../popover/src/Popover").TriggerEventHandlers[]>;
+        default: () => never[];
+    };
+    internalExtraClass: {
+        type: PropType<string[]>;
         default: () => never[];
     };
     onShow: PropType<import("../../_utils").MaybeArray<(value: boolean) => void> | undefined>;
@@ -1122,12 +1128,12 @@ declare const _default: import("vue").DefineComponent<{
     arrowPointToCenter: boolean;
     displayDirective: "show" | "if";
     keepAliveOnHover: boolean;
-    internalTrapFocus: boolean;
     animated: boolean;
+    internalTrapFocus: boolean;
     defaultShow: boolean;
-    internalExtraClass: string[];
     internalSyncTargetWithParent: boolean;
     internalInheritedEventHandlers: import("../../popover/src/Popover").TriggerEventHandlers[];
+    internalExtraClass: string[];
     cancelable: boolean;
 }>;
 export default _default;

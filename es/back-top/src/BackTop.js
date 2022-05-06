@@ -4,7 +4,7 @@ import { useIsMounted, useMergedState } from 'vooks';
 import { getScrollParent, unwrapElement } from 'seemly';
 import { useConfig, useTheme, useThemeClass } from '../../_mixins';
 import { NBaseIcon } from '../../_internal';
-import { formatLength, resolveSlot, warn, warnOnce } from '../../_utils';
+import { lockHtmlScrollRightCompensationRef, formatLength, resolveSlot, warn, warnOnce } from '../../_utils';
 import { backTopLight } from '../styles';
 import BackTopIcon from './BackTopIcon';
 import style from './styles/index.cssr';
@@ -67,7 +67,7 @@ export default defineComponent({
         const placeholderRef = ref(null);
         const styleRef = computed(() => {
             return {
-                right: formatLength(props.right),
+                right: `calc(${formatLength(props.right)} + ${lockHtmlScrollRightCompensationRef.value})`,
                 bottom: formatLength(props.bottom)
             };
         });

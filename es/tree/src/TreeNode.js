@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { h, inject, computed, defineComponent, ref, onMounted } from 'vue';
 import { useMemo } from 'vooks';
 import { happensIn, repeat } from 'seemly';
@@ -23,7 +22,7 @@ const TreeNode = defineComponent({
     setup(props) {
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         const NTree = inject(treeInjectionKey);
-        const { droppingNodeParentRef, droppingMouseNodeRef, draggingNodeRef, droppingPositionRef, droppingOffsetLevelRef, nodePropsRef, indentRef, blockLineRef } = NTree;
+        const { droppingNodeParentRef, droppingMouseNodeRef, draggingNodeRef, droppingPositionRef, droppingOffsetLevelRef, nodePropsRef, indentRef, blockLineRef, checkboxPlacementRef } = NTree;
         const disabledRef = computed(() => NTree.disabledRef.value || props.tmNode.disabled);
         const resolvedNodePropsRef = computed(() => {
             const { value: nodeProps } = nodePropsRef;
@@ -36,6 +35,7 @@ const TreeNode = defineComponent({
         // must be non-reactive
         const contentElRef = { value: null };
         onMounted(() => {
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             contentElRef.value = contentInstRef.value.$el;
         });
         function handleSwitcherClick() {
@@ -194,6 +194,7 @@ const TreeNode = defineComponent({
             droppingPosition: droppingPositionRef,
             droppingOffsetLevel: droppingOffsetLevelRef,
             indent: indentRef,
+            checkboxPlacement: checkboxPlacementRef,
             contentInstRef,
             contentElRef,
             handleCheck,
@@ -209,7 +210,7 @@ const TreeNode = defineComponent({
         };
     },
     render() {
-        const { tmNode, clsPrefix, checkable, selectable, selected, checked, highlight, draggable, blockLine, indent, disabled, pending, internalScrollable, nodeProps } = this;
+        const { tmNode, clsPrefix, checkable, selectable, selected, checked, highlight, draggable, blockLine, indent, disabled, pending, internalScrollable, nodeProps, checkboxPlacement } = this;
         // drag start not inside
         // it need to be append to node itself, not wrapper
         const dragEventHandlers = draggable && !disabled
@@ -224,6 +225,8 @@ const TreeNode = defineComponent({
         // In non virtual mode, there's no evidence that which element should be
         // scrolled to, so we need data-key to query the target element.
         const dataKey = internalScrollable ? createDataKey(tmNode.key) : undefined;
+        const checkboxOnRight = checkboxPlacement === 'right';
+        const checkboxNode = checkable ? (h(NTreeNodeCheckbox, { right: checkboxOnRight, focusable: this.checkboxFocusable, disabled: disabled || this.checkboxDisabled, clsPrefix: clsPrefix, checked: this.checked, indeterminate: this.indeterminate, onCheck: this.handleCheck })) : null;
         return (h("div", Object.assign({ class: `${clsPrefix}-tree-node-wrapper` }, dragEventHandlers),
             h("div", Object.assign({}, (blockLine ? nodeProps : undefined), { class: [
                     `${clsPrefix}-tree-node`,
@@ -241,27 +244,31 @@ const TreeNode = defineComponent({
                     : undefined }),
                 repeat(tmNode.level, h("div", { class: `${clsPrefix}-tree-node-indent`, style: { flex: `0 0 ${indent}px` } })),
                 h(NTreeNodeSwitcher, { clsPrefix: clsPrefix, expanded: this.expanded, loading: this.loading, hide: tmNode.isLeaf, onClick: this.handleSwitcherClick }),
-                checkable ? (h(NTreeNodeCheckbox, { focusable: this.checkboxFocusable, disabled: disabled || this.checkboxDisabled, clsPrefix: clsPrefix, checked: this.checked, indeterminate: this.indeterminate, onCheck: this.handleCheck })) : null,
+                !checkboxOnRight ? checkboxNode : null,
                 h(NTreeNodeContent, { ref: "contentInstRef", clsPrefix: clsPrefix, checked: checked, selected: selected, onClick: this.handleContentClick, nodeProps: blockLine ? undefined : nodeProps, onDragstart: draggable && !blockLine && !disabled
                         ? this.handleDragStart
                         : undefined, tmNode: tmNode }),
                 draggable
                     ? this.showDropMark
                         ? renderDropMark({
+                            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
                             el: this.contentElRef.value,
+                            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
                             position: this.droppingPosition,
                             offsetLevel: this.droppingOffsetLevel,
                             indent
                         })
                         : this.showDropMarkAsParent
                             ? renderDropMark({
+                                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
                                 el: this.contentElRef.value,
                                 position: 'inside',
                                 offsetLevel: this.droppingOffsetLevel,
                                 indent
                             })
                             : null
-                    : null)));
+                    : null,
+                checkboxOnRight ? checkboxNode : null)));
     }
 });
 export default TreeNode;

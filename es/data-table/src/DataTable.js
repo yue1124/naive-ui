@@ -57,7 +57,10 @@ export const dataTableProps = Object.assign(Object.assign({}, useTheme.props), {
     }, indent: {
         type: Number,
         default: 16
-    }, flexHeight: Boolean, onLoad: Function, 'onUpdate:page': [Function, Array], onUpdatePage: [Function, Array], 'onUpdate:pageSize': [Function, Array], onUpdatePageSize: [Function, Array], 'onUpdate:sorter': [Function, Array], onUpdateSorter: [Function, Array], 'onUpdate:filters': [Function, Array], onUpdateFilters: [Function, Array], 'onUpdate:checkedRowKeys': [Function, Array], onUpdateCheckedRowKeys: [Function, Array], 'onUpdate:expandedRowKeys': [Function, Array], onUpdateExpandedRowKeys: [Function, Array], 
+    }, flexHeight: Boolean, paginationBehaviorOnFilter: {
+        type: String,
+        default: 'current'
+    }, onLoad: Function, 'onUpdate:page': [Function, Array], onUpdatePage: [Function, Array], 'onUpdate:pageSize': [Function, Array], onUpdatePageSize: [Function, Array], 'onUpdate:sorter': [Function, Array], onUpdateSorter: [Function, Array], 'onUpdate:filters': [Function, Array], onUpdateFilters: [Function, Array], 'onUpdate:checkedRowKeys': [Function, Array], onUpdateCheckedRowKeys: [Function, Array], 'onUpdate:expandedRowKeys': [Function, Array], onUpdateExpandedRowKeys: [Function, Array], 
     // deprecated
     onPageChange: [Function, Array], onPageSizeChange: [Function, Array], onSorterChange: [Function, Array], onFiltersChange: [Function, Array], onCheckedRowKeysChange: [Function, Array] });
 export default defineComponent({
@@ -100,7 +103,7 @@ export default defineComponent({
         const scrollPartRef = ref('body');
         const mainTableInstRef = ref(null);
         const { rowsRef, colsRef, dataRelatedColsRef, hasEllipsisRef } = useGroupHeader(props);
-        const { treeMateRef, mergedCurrentPageRef, paginatedDataRef, rawPaginatedDataRef, selectionColumnRef, hoverKeyRef, mergedPaginationRef, mergedFilterStateRef, mergedSortStateRef, firstContentfulColIndexRef, doUpdateFilters, deriveNextSorter, filter, filters, clearFilter, clearFilters, clearSorter, page, sort } = useTableData(props, { dataRelatedColsRef });
+        const { treeMateRef, mergedCurrentPageRef, paginatedDataRef, rawPaginatedDataRef, selectionColumnRef, hoverKeyRef, mergedPaginationRef, mergedFilterStateRef, mergedSortStateRef, firstContentfulColIndexRef, doUpdatePage, doUpdateFilters, deriveNextSorter, filter, filters, clearFilter, clearFilters, clearSorter, page, sort } = useTableData(props, { dataRelatedColsRef });
         const { doCheckAll, doUncheckAll, doCheck, doUncheck, headerCheckboxDisabledRef, someRowsCheckedRef, allRowsCheckedRef, mergedCheckedRowKeySetRef, mergedInderminateRowKeySetRef } = useCheck(props, {
             selectionColumnRef,
             treeMateRef,
@@ -186,7 +189,9 @@ export default defineComponent({
             minHeightRef: toRef(props, 'minHeight'),
             flexHeightRef: toRef(props, 'flexHeight'),
             headerCheckboxDisabledRef,
+            paginationBehaviorOnFilterRef: toRef(props, 'paginationBehaviorOnFilter'),
             syncScrollState,
+            doUpdatePage,
             doUpdateFilters,
             deriveNextSorter,
             doCheck,

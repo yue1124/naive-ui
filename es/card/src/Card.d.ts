@@ -32,7 +32,7 @@ export declare const cardBaseProps: {
     readonly role: StringConstructor;
     readonly onClose: PropType<MaybeArray<() => void>>;
 };
-export declare const cardBasePropKeys: ("size" | "title" | "role" | "bordered" | "contentStyle" | "onClose" | "closable" | "hoverable" | "headerStyle" | "headerExtraStyle" | "footerStyle" | "embedded" | "segmented")[];
+export declare const cardBasePropKeys: ("size" | "title" | "role" | "bordered" | "contentStyle" | "onClose" | "closable" | "headerStyle" | "hoverable" | "headerExtraStyle" | "footerStyle" | "embedded" | "segmented")[];
 declare const cardProps: {
     title: StringConstructor;
     contentStyle: PropType<string | CSSProperties>;

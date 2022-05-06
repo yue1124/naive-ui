@@ -41,5 +41,5 @@ declare const presetProps: {
     hoverable: BooleanConstructor;
     role: StringConstructor;
 };
-declare const presetPropsKeys: ("type" | "content" | "size" | "icon" | "title" | "role" | "action" | "positiveText" | "negativeText" | "loading" | "bordered" | "showIcon" | "contentStyle" | "onClose" | "closable" | "iconPlacement" | "hoverable" | "headerStyle" | "headerExtraStyle" | "footerStyle" | "embedded" | "segmented" | "positiveButtonProps" | "negativeButtonProps" | "onPositiveClick" | "onNegativeClick")[];
+declare const presetPropsKeys: ("type" | "content" | "size" | "icon" | "title" | "role" | "action" | "positiveText" | "negativeText" | "loading" | "bordered" | "showIcon" | "contentStyle" | "onClose" | "closable" | "headerStyle" | "iconPlacement" | "hoverable" | "headerExtraStyle" | "footerStyle" | "embedded" | "segmented" | "positiveButtonProps" | "negativeButtonProps" | "onPositiveClick" | "onNegativeClick")[];
 export { presetProps, presetPropsKeys };

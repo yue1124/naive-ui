@@ -1,6 +1,14 @@
 import { PropType, CSSProperties } from 'vue';
 export declare const exposedDialogEnvProps: {
+    readonly blockScroll: {
+        readonly type: BooleanConstructor;
+        readonly default: true;
+    };
     readonly closeOnEsc: {
+        readonly type: BooleanConstructor;
+        readonly default: true;
+    };
+    readonly autoFocus: {
         readonly type: BooleanConstructor;
         readonly default: true;
     };
@@ -47,7 +55,15 @@ export declare const NDialogEnvironment: import("vue").DefineComponent<{
         type: PropType<(key: string) => void>;
         required: true;
     };
+    blockScroll: {
+        readonly type: BooleanConstructor;
+        readonly default: true;
+    };
     closeOnEsc: {
+        readonly type: BooleanConstructor;
+        readonly default: true;
+    };
+    autoFocus: {
         readonly type: BooleanConstructor;
         readonly default: true;
     };
@@ -102,7 +118,15 @@ export declare const NDialogEnvironment: import("vue").DefineComponent<{
         type: PropType<(key: string) => void>;
         required: true;
     };
+    blockScroll: {
+        readonly type: BooleanConstructor;
+        readonly default: true;
+    };
     closeOnEsc: {
+        readonly type: BooleanConstructor;
+        readonly default: true;
+    };
+    autoFocus: {
         readonly type: BooleanConstructor;
         readonly default: true;
     };
@@ -140,10 +164,12 @@ export declare const NDialogEnvironment: import("vue").DefineComponent<{
     iconPlacement: PropType<import("./interface").IconPlacement>;
 }>>, {
     type: "default" | "error" | "info" | "success" | "warning";
+    autoFocus: boolean;
     loading: boolean;
     bordered: boolean;
     showIcon: boolean;
     closable: boolean;
+    blockScroll: boolean;
     maskClosable: boolean;
     closeOnEsc: boolean;
 }>;

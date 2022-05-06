@@ -1,4 +1,4 @@
-import { h, nextTick, toRef, watch, ref, inject, defineComponent, provide, withDirectives, vShow, Transition, mergeProps, cloneVNode } from 'vue';
+import { h, nextTick, toRef, watch, ref, inject, defineComponent, provide, withDirectives, vShow, Transition, mergeProps, cloneVNode, computed } from 'vue';
 import { clickoutside } from 'vdirs';
 import { VFocusTrap } from 'vueuc';
 import { dialogPropKeys } from '../../dialog/src/dialogProps';
@@ -8,7 +8,7 @@ import { drawerBodyInjectionKey } from '../../drawer/src/interface';
 import { popoverBodyInjectionKey } from '../../popover/src/interface';
 import { NScrollbar } from '../../_internal';
 import { NCard } from '../../card';
-import { getFirstSlotVNode, keep, warn } from '../../_utils';
+import { getFirstSlotVNode, keep, useLockHtmlScroll, warn } from '../../_utils';
 import { modalBodyInjectionKey, modalInjectionKey } from './interface';
 import { presetProps } from './presetProps';
 export default defineComponent({
@@ -26,7 +26,7 @@ export default defineComponent({
         }, autoFocus: {
             type: Boolean,
             default: true
-        } }, presetProps), { 
+        }, blockScroll: Boolean }, presetProps), { 
         // events
         onClickoutside: {
             type: Function,
@@ -57,6 +57,7 @@ export default defineComponent({
             if (value)
                 displayedRef.value = true;
         });
+        useLockHtmlScroll(computed(() => props.blockScroll && displayedRef.value));
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         const NModal = inject(modalInjectionKey);
         function styleTransformOrigin() {

@@ -54,6 +54,8 @@ export declare const configProviderProps: {
             endDatePlaceholder: string;
             startDatetimePlaceholder: string;
             endDatetimePlaceholder: string;
+            startMonthPlaceholder: string;
+            endMonthPlaceholder: string;
             monthBeforeYear: boolean;
             firstDayOfWeek: 0 | 2 | 1 | 3 | 4 | 5 | 6;
             today: string;
@@ -193,6 +195,8 @@ declare const _default: import("vue").DefineComponent<{
             endDatePlaceholder: string;
             startDatetimePlaceholder: string;
             endDatetimePlaceholder: string;
+            startMonthPlaceholder: string;
+            endMonthPlaceholder: string;
             monthBeforeYear: boolean;
             firstDayOfWeek: 0 | 2 | 1 | 3 | 4 | 5 | 6;
             today: string;
@@ -336,6 +340,8 @@ declare const _default: import("vue").DefineComponent<{
             endDatePlaceholder: string;
             startDatetimePlaceholder: string;
             endDatetimePlaceholder: string;
+            startMonthPlaceholder: string;
+            endMonthPlaceholder: string;
             monthBeforeYear: boolean;
             firstDayOfWeek: 0 | 2 | 1 | 3 | 4 | 5 | 6;
             today: string;

@@ -1,6 +1,8 @@
 import { ExtractPropTypes } from 'vue';
-import { DateItem } from '../utils';
-import type { Shortcuts } from '../interface';
+import { VirtualListInst } from 'vueuc';
+import { DateItem, MonthItem, YearItem } from '../utils';
+import { Shortcuts } from '../interface';
+import { ScrollbarInst } from '../../../_internal';
 declare const useDualCalendarProps: {
     readonly actions: {
         readonly type: ArrayConstructor;
@@ -28,12 +30,22 @@ declare const useDualCalendarProps: {
     readonly themeClass: StringConstructor;
     readonly onRender: import("vue").PropType<(() => void) | undefined>;
 };
-declare function useDualCalendar(props: ExtractPropTypes<typeof useDualCalendarProps>, type?: string): {
+declare function useDualCalendar(props: ExtractPropTypes<typeof useDualCalendarProps>, type: 'daterange' | 'datetimerange' | 'monthrange'): {
     startDateDisplayString: import("vue").Ref<string>;
     endDateInput: import("vue").Ref<string>;
     timePickerSize: import("vue").Ref<"small" | "medium" | "large">;
     startTimeValue: import("vue").ComputedRef<number | null>;
     endTimeValue: import("vue").ComputedRef<number | null>;
+    datePickerSlots: Readonly<{
+        [name: string]: import("vue").Slot | undefined;
+    }>;
+    shortcuts: import("vue").ComputedRef<Shortcuts | undefined>;
+    startCalendarDateTime: import("vue").Ref<number>;
+    endCalendarDateTime: import("vue").Ref<number>;
+    justifyColumnsScrollState: {
+        (value: [number, number], type: 'start' | 'end'): void;
+        (): void;
+    };
     handleFocusDetectorFocus: () => void;
     handleStartTimePickerChange: (value: number | null) => void;
     handleEndTimePickerChange: (value: number | null) => void;
@@ -41,14 +53,18 @@ declare function useDualCalendar(props: ExtractPropTypes<typeof useDualCalendarP
     handleStartDateInputBlur: () => void;
     handleEndDateInput: (value: string) => void;
     handleEndDateInputBlur: () => void;
-    datePickerSlots: Readonly<{
-        [name: string]: import("vue").Slot | undefined;
-    }>;
-    shortcuts: import("vue").ComputedRef<Shortcuts | undefined>;
-    startCalendarDateTime: import("vue").Ref<number>;
-    endCalendarDateTime: import("vue").Ref<number>;
+    handleStartYearVlScroll: () => void;
+    handleEndYearVlScroll: () => void;
+    virtualListContainer: (type: 'start' | 'end') => HTMLElement;
+    virtualListContent: (type: 'start' | 'end') => HTMLElement;
     onUpdateStartCalendarValue: (value: number) => void;
     onUpdateEndCalendarValue: (value: number) => void;
+    startYearScrollbarRef: import("vue").Ref<ScrollbarInst | null>;
+    endYearScrollbarRef: import("vue").Ref<ScrollbarInst | null>;
+    startMonthScrollbarRef: import("vue").Ref<ScrollbarInst | null>;
+    endMonthScrollbarRef: import("vue").Ref<ScrollbarInst | null>;
+    startYearVlRef: import("vue").Ref<VirtualListInst | null>;
+    endYearVlRef: import("vue").Ref<VirtualListInst | null>;
     isDateDisabled: import("vue").Ref<import("../interface").IsDateDisabled | undefined>;
     isStartHourDisabled: import("vue").ComputedRef<import("../../../time-picker/src/interface").IsHourDisabled | undefined>;
     isEndHourDisabled: import("vue").ComputedRef<import("../../../time-picker/src/interface").IsHourDisabled | undefined>;
@@ -215,6 +231,7 @@ declare function useDualCalendar(props: ExtractPropTypes<typeof useDualCalendarP
             calendarLeftPaddingMonth: string;
             calendarLeftPaddingYear: string;
             calendarLeftPaddingQuarter: string;
+            calendarLeftPaddingMonthrange: string;
             calendarRightPaddingDate: string;
             calendarRightPaddingDatetime: string;
             calendarRightPaddingDaterange: string;
@@ -222,6 +239,7 @@ declare function useDualCalendar(props: ExtractPropTypes<typeof useDualCalendarP
             calendarRightPaddingMonth: string;
             calendarRightPaddingYear: string;
             calendarRightPaddingQuarter: string;
+            calendarRightPaddingMonthrange: string;
         };
         peers: {
             Input: import("../../../_mixins").Theme<"Input", {
@@ -1098,6 +1116,8 @@ declare function useDualCalendar(props: ExtractPropTypes<typeof useDualCalendarP
         endDatePlaceholder: string;
         startDatetimePlaceholder: string;
         endDatetimePlaceholder: string;
+        startMonthPlaceholder: string;
+        endMonthPlaceholder: string;
         monthBeforeYear: boolean;
         firstDayOfWeek: 0 | 2 | 1 | 3 | 4 | 5 | 6;
         today: string;
@@ -1121,6 +1141,7 @@ declare function useDualCalendar(props: ExtractPropTypes<typeof useDualCalendarP
     endDatesElRef: import("vue").Ref<HTMLElement | null>;
     resetSelectingStatus: (e: MouseEvent) => void;
     handleDateClick: (dateItem: DateItem) => void;
+    handleColItemClick: (dateItem: MonthItem | YearItem, clickType: 'start' | 'end') => void;
     handleDateMouseEnter: (dateItem: DateItem) => void;
     handleConfirmClick: () => void;
     startCalendarPrevYear: () => void;
@@ -1141,6 +1162,10 @@ declare function useDualCalendar(props: ExtractPropTypes<typeof useDualCalendarP
     weekdays: import("vue").ComputedRef<string[]>;
     startDateArray: import("vue").ComputedRef<DateItem[]>;
     endDateArray: import("vue").ComputedRef<DateItem[]>;
+    startYearArray: import("vue").ComputedRef<YearItem[]>;
+    startMonthArray: import("vue").ComputedRef<MonthItem[]>;
+    endYearArray: import("vue").ComputedRef<YearItem[]>;
+    endMonthArray: import("vue").ComputedRef<MonthItem[]>;
     handleRangeShortcutMouseenter: (shortcut: Shortcuts[string]) => void;
     handleRangeShortcutClick: (shortcut: Shortcuts[string]) => void;
 };

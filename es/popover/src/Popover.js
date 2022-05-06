@@ -1,10 +1,10 @@
 import { h, ref, computed, createTextVNode, defineComponent, provide, toRef, cloneVNode, watchEffect, withDirectives } from 'vue';
 import { VBinder, VTarget } from 'vueuc';
 import { useMergedState, useCompitable, useIsMounted, useMemo } from 'vooks';
+import { zindexable } from 'vdirs';
 import { call, keep, getFirstSlotVNode, warnOnce, useAdjustedTo } from '../../_utils';
 import { useTheme } from '../../_mixins';
 import NPopoverBody, { popoverBodyProps } from './PopoverBody';
-import { zindexable } from 'vdirs';
 const bodyPropKeys = Object.keys(popoverBodyProps);
 const triggerEventMap = {
     focus: ['onFocus', 'onBlur'],
@@ -87,34 +87,34 @@ export const popoverBaseProps = {
         type: Boolean,
         default: true
     },
-    onClickoutside: Function,
-    internalExtraClass: {
-        type: Array,
-        default: () => []
-    },
-    // events
-    'onUpdate:show': [Function, Array],
-    onUpdateShow: [Function, Array],
     zIndex: Number,
     to: useAdjustedTo.propTo,
+    scrollable: Boolean,
+    contentStyle: [Object, String],
+    headerStyle: [Object, String],
+    // events
+    onClickoutside: Function,
+    'onUpdate:show': [Function, Array],
+    onUpdateShow: [Function, Array],
+    // internal
     internalSyncTargetWithParent: Boolean,
     internalInheritedEventHandlers: {
         type: Array,
         default: () => []
     },
     internalTrapFocus: Boolean,
-    /** @deprecated */
+    internalExtraClass: {
+        type: Array,
+        default: () => []
+    },
+    // deprecated
     onShow: [Function, Array],
-    /** @deprecated */
     onHide: [Function, Array],
-    /** @deprecated */
     arrow: {
         type: Boolean,
         default: undefined
     },
-    /** @deprecated */
     minWidth: Number,
-    /** @deprecated */
     maxWidth: Number
 };
 const popoverProps = Object.assign(Object.assign(Object.assign({}, useTheme.props), popoverBaseProps), { internalRenderBody: Function });

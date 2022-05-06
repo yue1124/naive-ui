@@ -4,6 +4,7 @@ declare const _default: import("vue").DefineComponent<{
         type: StringConstructor;
         required: true;
     };
+    right: BooleanConstructor;
     focusable: BooleanConstructor;
     disabled: BooleanConstructor;
     checked: BooleanConstructor;
@@ -197,12 +198,14 @@ declare const _default: import("vue").DefineComponent<{
         type: StringConstructor;
         required: true;
     };
+    right: BooleanConstructor;
     focusable: BooleanConstructor;
     disabled: BooleanConstructor;
     checked: BooleanConstructor;
     indeterminate: BooleanConstructor;
     onCheck: PropType<(value: boolean) => void>;
 }>>, {
+    right: boolean;
     disabled: boolean;
     checked: boolean;
     focusable: boolean;

@@ -1,7 +1,7 @@
 import { PropType, CSSProperties } from 'vue';
 import type { ExtractPublicPropTypes } from '../../_utils';
 declare type Align = 'stretch' | 'baseline' | 'start' | 'end' | 'center' | 'flex-end' | 'flex-start';
-export declare type Justify = 'start' | 'end' | 'center' | 'space-around' | 'space-between';
+export declare type Justify = 'start' | 'end' | 'center' | 'space-around' | 'space-between' | 'space-evenly';
 declare const spaceProps: {
     readonly align: PropType<Align>;
     readonly justify: {

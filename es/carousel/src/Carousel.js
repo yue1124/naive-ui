@@ -429,7 +429,7 @@ export default defineComponent({
             }
             const { autoplay, interval } = props;
             if (autoplay && interval && !cleanOnly) {
-                autoplayTimer = setInterval(next, interval);
+                autoplayTimer = window.setInterval(next, interval);
             }
         }
         function mesureAutoplay() {
