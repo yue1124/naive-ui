@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import {
   h,
   inject,
@@ -41,7 +40,8 @@ const TreeNode = defineComponent({
       droppingOffsetLevelRef,
       nodePropsRef,
       indentRef,
-      blockLineRef
+      blockLineRef,
+      checkboxPlacementRef
     } = NTree
 
     const disabledRef = computed(
@@ -60,6 +60,7 @@ const TreeNode = defineComponent({
     const contentElRef: { value: HTMLElement | null } = { value: null }
 
     onMounted(() => {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       contentElRef.value = contentInstRef.value!.$el as HTMLElement
     })
 
@@ -229,6 +230,7 @@ const TreeNode = defineComponent({
       droppingPosition: droppingPositionRef,
       droppingOffsetLevel: droppingOffsetLevelRef,
       indent: indentRef,
+      checkboxPlacement: checkboxPlacementRef,
       contentInstRef,
       contentElRef,
       handleCheck,
@@ -258,7 +260,8 @@ const TreeNode = defineComponent({
       disabled,
       pending,
       internalScrollable,
-      nodeProps
+      nodeProps,
+      checkboxPlacement
     } = this
     // drag start not inside
     // it need to be append to node itself, not wrapper
@@ -275,6 +278,18 @@ const TreeNode = defineComponent({
     // In non virtual mode, there's no evidence that which element should be
     // scrolled to, so we need data-key to query the target element.
     const dataKey = internalScrollable ? createDataKey(tmNode.key) : undefined
+    const checkboxOnRight = checkboxPlacement === 'right'
+    const checkboxNode = checkable ? (
+      <NTreeNodeCheckbox
+        right={checkboxOnRight}
+        focusable={this.checkboxFocusable}
+        disabled={disabled || this.checkboxDisabled}
+        clsPrefix={clsPrefix}
+        checked={this.checked}
+        indeterminate={this.indeterminate}
+        onCheck={this.handleCheck}
+      />
+    ) : null
     return (
       <div class={`${clsPrefix}-tree-node-wrapper`} {...dragEventHandlers}>
         <div
@@ -314,16 +329,7 @@ const TreeNode = defineComponent({
             hide={tmNode.isLeaf}
             onClick={this.handleSwitcherClick}
           />
-          {checkable ? (
-            <NTreeNodeCheckbox
-              focusable={this.checkboxFocusable}
-              disabled={disabled || this.checkboxDisabled}
-              clsPrefix={clsPrefix}
-              checked={this.checked}
-              indeterminate={this.indeterminate}
-              onCheck={this.handleCheck}
-            />
-          ) : null}
+          {!checkboxOnRight ? checkboxNode : null}
           <NTreeNodeContent
             ref="contentInstRef"
             clsPrefix={clsPrefix}
@@ -341,13 +347,16 @@ const TreeNode = defineComponent({
           {draggable
             ? this.showDropMark
               ? renderDropMark({
+                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
                 el: this.contentElRef.value!,
+                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
                 position: this.droppingPosition!,
                 offsetLevel: this.droppingOffsetLevel,
                 indent
               })
               : this.showDropMarkAsParent
                 ? renderDropMark({
+                  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
                   el: this.contentElRef.value!,
                   position: 'inside',
                   offsetLevel: this.droppingOffsetLevel,
@@ -355,6 +364,7 @@ const TreeNode = defineComponent({
                 })
                 : null
             : null}
+          {checkboxOnRight ? checkboxNode : null}
         </div>
       </div>
     )
