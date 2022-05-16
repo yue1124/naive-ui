@@ -19,6 +19,7 @@ import {
 import { NCode } from '../../code'
 import { NCard } from '../../card'
 import { NScrollbar } from '../../scrollbar'
+import { NImage } from '../../image'
 
 export interface RenderOptions {
   softbreak: 'br' | 'n'
@@ -192,12 +193,25 @@ const imageRenderer: ContainerRenderer = {
     children: Array<VNode | string>
   ): VNode {
     let alt
+    let height: string = ''
+    let width: string = ''
     if (
       children.length > 0 &&
       typeof children[0] === 'string' &&
       children[0].length > 0
     ) {
       alt = children[0]
+      let pos = alt.search(';')
+      while (pos !== -1) {
+        const info = alt.slice(0, pos)
+        if (info.startsWith('w:')) {
+          width = info.slice(2)
+        } else if (info.startsWith('h:')) {
+          height = info.slice(2)
+        }
+        alt = alt.slice(pos + 1)
+        pos = alt.search(';')
+      }
     }
 
     let src = node.destination
@@ -214,8 +228,11 @@ const imageRenderer: ContainerRenderer = {
           ? `${options.imgSrcPrefix}${src}`
           : `${options.imgSrcPrefix}/${src}`
       }
-
-      return h(<img src={src} alt={alt} title={node.title || alt} />)
+      return h(
+        NImage,
+        { alt, height, width, src, previewDisabled: true },
+        () => {}
+      )
     }
   }
 }

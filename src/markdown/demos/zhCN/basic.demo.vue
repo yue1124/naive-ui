@@ -26,6 +26,8 @@ export default defineComponent({
 ## 图片
 ![logo](https://bigyue.cn/statics/icon.png "bigyue.cn")
 
+![w:300;h:300;logo](https://bigyue.cn/statics/icon.png "bigyue.cn")
+
 ## 超链接
 [bigyue.cn](https://bigyue.cn)
 
